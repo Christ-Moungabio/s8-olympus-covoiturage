@@ -37,6 +37,12 @@
   --shadow-lg: 0 2px 6px rgba(0, 0, 0, .35), 0 18px 44px rgba(0, 0, 0, .4);
 }
 
+/* ── Bouton de thème : affiche la lune en clair, le soleil en sombre ────── */
+.theme-btn > span { display: none; }
+.theme-btn > span:first-child { display: block; }
+:root[data-theme="dark"] .theme-btn > span:first-child { display: none; }
+:root[data-theme="dark"] .theme-btn > span:last-child { display: block; }
+
 /* ── Réinitialisation & base ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 
