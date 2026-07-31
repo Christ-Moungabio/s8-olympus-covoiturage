@@ -43,6 +43,14 @@
 :root[data-theme="dark"] .theme-btn > span:first-child { display: none; }
 :root[data-theme="dark"] .theme-btn > span:last-child { display: block; }
 
+/* ── Icônes des boutons : blanches en mode sombre (SVG stroke="currentColor"
+   chargés via <img>, currentColor n'hérite pas de la page — on inverse) ──── */
+:root[data-theme="dark"] .theme-btn img,
+:root[data-theme="dark"] .menu-btn img,
+:root[data-theme="dark"] .mobile-nav-close img {
+  filter: invert(1);
+}
+
 /* ── Réinitialisation & base ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 

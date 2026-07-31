@@ -80,4 +80,4 @@
     initMobileMenu();
     markActiveNavLinks();
   });
-});
+})();
