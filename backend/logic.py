@@ -194,7 +194,13 @@ def compter_reservations_par_trajet(trajet_id, reservations):
         la réservation du trajet 2 ne compte pas, ce n'est pas le bon trajet)
     """
     # TODO : à compléter
-    pass
+    compteur=0
+    for reservation in reservations:
+        if reservation["trajet_id"] ==trajet_id and reservation["statut"] !="annule":
+            compteur += 1
+    return compteur
+
+
 
 
 def verifier_place_disponible(trajet_id, trajets, reservations):
