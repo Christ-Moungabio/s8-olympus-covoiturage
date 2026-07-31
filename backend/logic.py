@@ -193,7 +193,7 @@ def compter_reservations_par_trajet(trajet_id, reservations):
         (les 2 réservations du trajet 1 qui ne sont pas "annule";
         la réservation du trajet 2 ne compte pas, ce n'est pas le bon trajet)
     """
-    # TODO : à compléter
+    # TODO 
     compteur=0
     for reservation in reservations:
         if reservation["trajet_id"] ==trajet_id and reservation["statut"] !="annule":
@@ -245,8 +245,27 @@ def verifier_place_disponible(trajet_id, trajets, reservations):
         (3 places au total, 2 déjà prises par des réservations actives,
         il en reste 1)
     """
-    # TODO : à compléter
-    pass
+    # TODO 
+    trajet_trouve = None
+    for trajet in trajets:
+        if trajet["id"] == trajet_id:
+            trajet_trouve = trajet
+
+    if trajet_trouve is None:
+        return {"place_dispo": False, "places_restantes": 0, "message": "Trajet introuvable"}
+
+    reservations_actives = 0
+    for reservation in reservations:
+        if reservation["trajet_id"] == trajet_id and reservation["statut"] != "annule":
+            reservations_actives += 1
+
+    places_restantes = trajet_trouve["places_dispo"] - reservations_actives
+
+    if places_restantes >= 1:
+        return {"place_dispo": True, "places_restantes": places_restantes, "message": ""}
+    else:
+        return {"place_dispo": False, "places_restantes": 0, "message": "Trajet complet"}
+
 
 
 def filtrer_reservations_par_statut(reservations, statut):
@@ -272,8 +291,13 @@ def filtrer_reservations_par_statut(reservations, statut):
         filtrer_reservations_par_statut(reservations, "effectue")
         -> [{"id": 1, "statut": "effectue"}, {"id": 3, "statut": "effectue"}]
     """
-    # TODO : à compléter
-    pass
+    # TODO 
+    resultat = []
+    for reservation in reservations:
+        if reservation["statut"] == statut:
+            resultat.append(reservation)
+    return resultat
+
 
 
 def historique_reservations_passager(passager_tel, reservations):
@@ -299,8 +323,14 @@ def historique_reservations_passager(passager_tel, reservations):
         historique_reservations_passager("067111222", reservations)
         -> [{"id": 1, "passager_tel": "067111222"}, {"id": 3, "passager_tel": "067111222"}]
     """
-    # TODO : à compléter
-    pass
+    # TODO 
+
+    resultat = []
+    for reservation in reservations:
+        if reservation["passager_tel"] == passager_tel:
+            resultat.append(reservation)
+    return resultat
+
 
 
 def calculer_taux_annulation(reservations):
@@ -326,8 +356,17 @@ def calculer_taux_annulation(reservations):
         calculer_taux_annulation(reservations) -> 33.3
         (1 annulée sur 3 réservations, soit 33.33...%, arrondi à 33.3)
     """
-    # TODO : à compléter
-    pass
+    # TODO 
+    if len(reservations) == 0:
+        return 0.0
+
+    nb_annulees = 0
+    for reservation in reservations:
+        if reservation["statut"] == "annule":
+            nb_annulees += 1
+
+    taux = (nb_annulees / len(reservations)) * 100
+    return round(taux, 1)
 
 
 # ========================================================================
