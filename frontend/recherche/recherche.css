@@ -352,13 +352,18 @@ main {
 }
 
 #erreur-globale {
-  padding: 16px 18px;
-  margin-bottom: 24px;
+  max-width: 1160px;
+  width: min(100%, 1160px);
+  margin: 20px auto 24px;
+  padding: 14px 16px;
   border: 1px solid #FBBF24;
   border-radius: 16px;
   background: #FEF3C7;
   color: #92400E;
   font-weight: 600;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  line-height: 1.5;
 }
 
 .tri-btn:hover {
