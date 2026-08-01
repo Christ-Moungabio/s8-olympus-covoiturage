@@ -59,6 +59,7 @@
 }
 .form-field input::placeholder {
   color: var(--color-text-muted);
+  opacity: 0.2;
 }
 
 .auth-form .btn {
