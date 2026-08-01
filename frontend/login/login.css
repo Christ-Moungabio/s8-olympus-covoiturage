@@ -1,4 +1,15 @@
 /* ── Page de connexion ──────────────────────────────────────────────────── */
+.retour-accueil {
+  display: inline-block;
+  margin: 20px 24px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+.retour-accueil:hover {
+  color: var(--color-primary);
+}
+
 .auth-main {
   display: flex;
   justify-content: center;
@@ -54,12 +65,14 @@
   font: inherit;
   outline: 0;
 }
+
 .form-field input:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 .form-field input::placeholder {
   color: var(--color-text-muted);
+  opacity: 0.3;
 }
 
 .auth-form .btn {
