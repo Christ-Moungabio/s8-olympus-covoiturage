@@ -60,7 +60,13 @@ def filtrer_trajets_disponibles(trajets):
     """
     # On construit une nouvelle liste, vide au départ.
     # TODO : à compléter
-    pass
+    
+    trajets_disponibles = []
+    for trajet in trajets:
+        if trajet["places_dispo"] >= 1:
+            trajets_disponibles.append(trajet)
+    return trajets_disponibles 
+    
 
 
 def filtrer_par_quartier_depart(trajets, quartier):
@@ -86,7 +92,11 @@ def filtrer_par_quartier_depart(trajets, quartier):
         -> [{"id": 1, "quartier_depart": "Bacongo"}, {"id": 3, "quartier_depart": "Bacongo"}]
     """
     # TODO : à compléter
-    pass
+    trajets_filtres = []
+    for trajet in trajets:
+        if trajet["quartier_depart"] == quartier:
+            trajets_filtres.append(trajet)
+    return trajets_filtres
 
 
 def filtrer_par_trajet_complet(trajets, depart, arrivee):
@@ -112,8 +122,13 @@ def filtrer_par_trajet_complet(trajets, depart, arrivee):
         filtrer_par_trajet_complet(trajets, "Bacongo", "Poto-Poto")
         -> [{"id": 1, "quartier_depart": "Bacongo", "quartier_arrivee": "Poto-Poto"}]
     """
-    # TODO : à compléter
-    pass
+
+    # Parcourt chaque trajet dans trajets et Vérifie que les deux conditions sont vraies (départ ET arrivée correspondent).
+    
+    return [
+        trajet for trajet in trajets
+        if trajet["quartier_depart"] == depart and trajet["quartier_arrivee"] == arrivee
+    ]
 
 
 def trier_par_heure(trajets):
@@ -141,8 +156,7 @@ def trier_par_heure(trajets):
         comparaison de chaînes), pas besoin de les convertir en nombres.
     """
     # TODO : à compléter
-    pass
-
+    return sorted(trajets, key=lambda trajet: trajet["heure"])
 
 def trier_par_prix_croissant(trajets):
     """
