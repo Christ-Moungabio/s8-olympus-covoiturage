@@ -122,8 +122,13 @@ def filtrer_par_trajet_complet(trajets, depart, arrivee):
         filtrer_par_trajet_complet(trajets, "Bacongo", "Poto-Poto")
         -> [{"id": 1, "quartier_depart": "Bacongo", "quartier_arrivee": "Poto-Poto"}]
     """
-    # TODO : à compléter
-    pass
+
+    # Parcourt chaque trajet dans trajets et Vérifie que les deux conditions sont vraies (départ ET arrivée correspondent).
+    
+    return [
+        trajet for trajet in trajets
+        if trajet["quartier_depart"] == depart and trajet["quartier_arrivee"] == arrivee
+    ]
 
 
 def trier_par_heure(trajets):
