@@ -1,0 +1,442 @@
+
+.site-nav {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-text);
+}
+
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 15px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+}
+
+.nav-links a {
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-primary);
+}
+
+/* Rempli dynamiquement par main.js (connexion / profil) */
+#nav-session:empty::after {
+  content: "";
+}
+
+/* ── Contenu principal ────────────────────────────────────────────────── */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+.retour-accueil {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.retour-accueil:hover {
+  color: var(--color-primary);
+}
+
+/* ── Barre de filtres ─────────────────────────────────────────────────── */
+.barre-filtres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.barre-filtres select,
+.barre-filtres input {
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 15px;
+}
+
+.barre-filtres select {
+  flex: 1 1 180px;
+}
+
+.barre-filtres input {
+  flex: 2 1 260px;
+}
+
+.barre-filtres button {
+  flex: 0 0 auto;
+  padding: 0 22px;
+  height: 46px;
+  border-radius: 10px;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.barre-filtres button:hover {
+  background: var(--color-primary-dark);
+}
+
+/* ── Layout général : sidebar + contenu ──────────────────────────────── */
+.layout-recherche {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* ── Sidebar filtres (décoratif, cf. commentaire HTML) ──────────────── */
+.sidebar-filtres {
+  flex: 0 0 280px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar-filtres h2 {
+  margin: 0 0 16px;
+  font-size: 17px;
+}
+
+.filtre-groupe {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.filtre-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.prix-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: var(--color-bg);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+
+.prix-sous-label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.prix-valeur {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.slider-prix {
+  width: 100%;
+  accent-color: var(--color-primary);
+}
+
+.slider-bornes {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 13px;
+}
+
+.pill-active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-surface-alt);
+}
+
+.filtre-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.toggle-souslabel {
+  display: block;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.toggle {
+  width: 40px;
+  height: 22px;
+  accent-color: var(--color-primary);
+}
+
+.mini-carte {
+  margin-top: 20px;
+  background: var(--color-surface-alt);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+}
+
+.mini-carte-tag {
+  display: inline-block;
+  background: var(--color-surface);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.mini-carte-svg {
+  width: 100%;
+  height: auto;
+}
+
+/* ── Zone de résultats ────────────────────────────────────────────────── */
+.contenu-resultats {
+  flex: 1;
+  min-width: 0;
+}
+
+.resultats-entete {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.nb-resultats {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.tri-boutons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tri-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.tri-btn-active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-surface-alt);
+}
+
+/* ── Liste des trajets ────────────────────────────────────────────────── */
+/* Grille : 1 colonne mobile, 2 colonnes desktop max (place laissée à la sidebar) */
+#liste-trajets {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 860px) {
+  #liste-trajets {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Chaque trajet trouvé — carte verticale pour bien s'adapter à la grille */
+.carte-trajet {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.carte-trajet h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.carte-trajet .heure {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.carte-trajet .conducteur {
+  margin: 0;
+  font-size: 15px;
+}
+
+.carte-trajet .badge {
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+.carte-trajet .prix {
+  margin: 8px 0 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Badges de statut (dispo / limité / complet) */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-dispo {
+  background: #DCFCE7;
+  color: #15803D;
+}
+
+.badge-limite {
+  background: #FEF3C7;
+  color: #B45309;
+}
+
+.badge-complet {
+  background: #FEE2E2;
+  color: #B91C1C;
+}
+
+/* Bouton "Voir le trajet" — pleine largeur, en bas de carte */
+.btn-voir {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn-voir:hover {
+  background: var(--color-primary-dark);
+  color: #fff;
+}
+
+/* Message quand aucun trajet ne correspond à la recherche */
+.aucun-resultat {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: 14px;
+}
+
+/* Bandeau d'erreur générale */
+#erreur-globale {
+  background: #FEE2E2;
+  color: #B91C1C;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+/* ── Responsive : mobile ─────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .site-nav-inner {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .nav-links {
+    order: 3;
+    flex-basis: 100%;
+    gap: 16px;
+    overflow-x: auto;
+  }
+
+  .barre-filtres select,
+  .barre-filtres input,
+  .barre-filtres button {
+    flex: 1 1 100%;
+  }
+
+  .layout-recherche {
+    flex-direction: column;
+  }
+
+  .sidebar-filtres {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
