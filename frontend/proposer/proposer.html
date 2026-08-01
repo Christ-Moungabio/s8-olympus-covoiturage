@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BraCovoit — Proposer un trajet</title>
+  <link rel="stylesheet" href="../layout.css">
   <link rel="stylesheet" href="proposer.css">
 </head>
 <body id="page-proposer">
@@ -14,6 +15,14 @@
   <div id="nav-session"></div>
 
   <main>
+    <div class="page-header">
+      <span class="page-icon" aria-hidden="true"><span class="page-icon-glyph"></span></span>
+      <div>
+        <h1>Proposer un trajet</h1>
+        <p class="page-subtitle">Indiquez votre trajet et vos disponibilités : les passagers pourront le réserver en quelques clics.</p>
+      </div>
+    </div>
+
     <!-- =====================================================================
          FORMULAIRE — TODO (Dev FS4)
          Mettre en forme le formulaire de proposition de trajet : les deux
@@ -24,23 +33,49 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <form id="form-proposer">
-      <label for="p-depart">Quartier de départ</label>
-      <select id="p-depart"></select>
+    <form id="form-proposer" class="form-card">
+      <div class="route-group">
+        <div class="field">
+          <label for="p-depart">Quartier de départ</label>
+          <div class="select-wrap select-wrap--pin">
+            <select id="p-depart"></select>
+          </div>
+        </div>
 
-      <label for="p-arrivee">Quartier d'arrivée</label>
-      <select id="p-arrivee"></select>
+        <div class="route-divider" aria-hidden="true"><span class="route-divider-icon"></span></div>
 
-      <label for="p-heure">Heure (HH:MM)</label>
-      <input type="text" id="p-heure" placeholder="07:30">
+        <div class="field">
+          <label for="p-arrivee">Quartier d'arrivée</label>
+          <div class="select-wrap select-wrap--pin">
+            <select id="p-arrivee"></select>
+          </div>
+        </div>
+      </div>
 
-      <label for="p-places">Places disponibles</label>
-      <input type="number" id="p-places" min="1" max="8">
+      <div class="field">
+        <label for="p-heure">Heure de départ</label>
+        <input type="time" id="p-heure">
+        <small class="field-hint">Sélectionnez l'heure de départ</small>
+      </div>
 
-      <label for="p-prix">Prix par place (FCFA)</label>
-      <input type="number" id="p-prix" min="1">
+      <div class="field-row">
+        <div class="field">
+          <label for="p-places">Places disponibles</label>
+          <input type="number" id="p-places" min="1" max="8">
+          <small class="field-hint">Entre 1 et 8 places</small>
+        </div>
 
-      <button type="submit">Publier mon trajet</button>
+        <div class="field">
+          <label for="p-prix">Prix par place (FCFA)</label>
+          <input type="number" id="p-prix" min="1">
+          <small class="field-hint">Montant libre</small>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">
+        <span>Publier mon trajet</span>
+        <span class="btn-icon" aria-hidden="true"></span>
+      </button>
     </form>
 
     <!-- Zone d'erreurs de validation — TODO (Dev FS4) : mettre en forme la
@@ -50,6 +85,17 @@
 
     <!-- BLOC D'AIDE — TODO (Dev FS4) : encart explicatif optionnel
          (ex. rappel que le prix est libre, conseils de sécurité) -->
+    <div class="help-card">
+      <h2 class="help-card-title">
+        <span class="help-card-icon" aria-hidden="true"></span>
+        Bon à savoir
+      </h2>
+      <ul class="help-card-list">
+        <li>Le prix par place est libre : ajustez-le selon vos frais d'essence, sans obligation de faire du profit.</li>
+        <li>Vérifiez l'identité de vos passagers et privilégiez un point de rendez-vous public et fréquenté.</li>
+        <li>Ne partagez vos informations personnelles qu'après confirmation de la réservation.</li>
+      </ul>
+    </div>
   </main>
 
   <div id="erreur-globale" hidden></div>
