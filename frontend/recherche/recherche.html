@@ -3,28 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BraCovoit — Recherche</title>
+  <title>Page — Recherche</title>
+  <link rel="stylesheet" href="../layout.css">
   <link rel="stylesheet" href="recherche.css">
 </head>
 <body id="page-recherche">
-
-  <!-- NAVIGATION — TODO (Dev FS2) -->
-  <header class="site-nav">
-    <div class="site-nav-inner">
-      <a href="../accueil/index.html" class="logo">
-        <span class="logo-mark" aria-hidden="true">↗</span> Tokende
-      </a>
-      <nav class="nav-links">
-        <a href="../accueil/index.html">Accueil</a>
-        <a href="recherche.html" class="active">Rechercher un trajet</a>
-        <a href="../proposer/proposer.html">Proposer un trajet</a>
-        <a href="../mes-trajets/mes-trajets.html">Mes réservations</a>
-      </nav>
-
-      <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-      <div id="nav-session"></div>
-    </div>
-  </header>
 
   <main>
     <a href="../accueil/index.html" class="retour-accueil">← Retour à l'accueil</a>
@@ -43,12 +26,7 @@
       <button id="btn-rechercher">Rechercher</button>
     </section>
 
-    <!-- =====================================================================
-         AJOUT VISUEL — sidebar filtres + tri, inspiré de la maquette.
-         ⚠️ Décoratif : ces contrôles ne sont PAS câblés à main.js/logic.py
-         (aucune fonction de tri/filtre prix/période/véhicule dans le scaffold).
-         Ils ne filtrent rien tant que personne ne code la logique derrière.
-         ===================================================================== -->
+
     <div class="layout-recherche">
       <aside class="sidebar-filtres">
         <h2>Filtrer les trajets</h2>
@@ -57,6 +35,7 @@
           <span class="filtre-label">Prix maximum</span>
           <div class="prix-card">
             <span class="prix-sous-label">Par personne</span>
+
             <span class="prix-valeur">1500 FCFA</span>
           </div>
           <input type="range" min="0" max="2000" value="1500" class="slider-prix" aria-label="Prix maximum">
@@ -79,7 +58,9 @@
           <div class="pills">
             <button type="button" class="pill pill-active">Tous</button>
             <button type="button" class="pill">Berline</button>
+
             <button type="button" class="pill">Citadine</button>
+
             <button type="button" class="pill">SUV</button>
           </div>
         </div>
@@ -94,12 +75,7 @@
 
         <div class="mini-carte" aria-hidden="true">
           <span class="mini-carte-tag">Aperçu de l'itinéraire</span>
-          <svg viewBox="0 0 200 110" class="mini-carte-svg">
-            <circle cx="20" cy="20" r="4" fill="#2563EB"/>
-            <path d="M20 20 L120 45" stroke="#93C5FD" stroke-width="2" fill="none"/>
-            <path d="M20 60 L140 80" stroke="#93C5FD" stroke-width="2" fill="none"/>
-            <circle cx="150" cy="90" r="4" fill="#F59E0B"/>
-          </svg>
+          
         </div>
       </aside>
 
@@ -128,7 +104,56 @@
 
              *** NE PAS MODIFIER l'id ci-dessous ***
              ===================================================================== -->
-        <section id="liste-trajets"></section>
+        <section id="liste-trajets">
+          <article class="carte-trajet">
+            <div class="carte-trajet-en-tete">
+              <div>
+                <h3>Poto-Pato → Talangaï</h3>
+                <p class="heure">07:30</p>
+              </div>
+              <div class="carte-trajet-prix-zone">
+                <p class="prix">800 FCFA</p>
+                <span class="badge badge-dispo">3 places</span>
+              </div>
+            </div>
+            <div class="carte-trajet-conducteur">
+              <p class="conducteur">Christ-Henoc Moungabio · Toyota Corolla</p>
+            </div>
+            <a href="../trajet/trajet.html?id=1" class="btn-voir">Voir le projet</a>
+          </article>
+          <article class="carte-trajet">
+            <div class="carte-trajet-en-tete">
+              <div>
+                <h3>Poto-Pato → Bacongo</h3>
+                <p class="heure">08:15</p>
+              </div>
+              <div class="carte-trajet-prix-zone">
+                <p class="prix">700 FCFA</p>
+                <span class="badge badge-dispo">2 places</span>
+              </div>
+            </div>
+            <div class="carte-trajet-conducteur">
+              <p class="conducteur">Christ-Henoc Moungabio · Suzuki Swift</p>
+            </div>
+            <a href="../trajet/trajet.html?id=2" class="btn-voir">Voir le projet</a>
+          </article>
+          <article class="carte-trajet">
+            <div class="carte-trajet-en-tete">
+              <div>
+                <h3>Poto-Pato → Makélékélé</h3>
+                <p class="heure">09:00</p>
+              </div>
+              <div class="carte-trajet-prix-zone">
+                <p class="prix">1000 FCFA</p>
+                <span class="badge badge-limite">1 place</span>
+              </div>
+            </div>
+            <div class="carte-trajet-conducteur">
+              <p class="conducteur">Christ-Henoc Moungabio · Toyota RAV4</p>
+            </div>
+            <a href="../trajet/trajet.html?id=3" class="btn-voir">Voir le projet</a>
+          </article>
+        </section>
       </div>
     </div>
   </main>

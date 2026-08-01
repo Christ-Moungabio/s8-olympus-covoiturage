@@ -51,7 +51,8 @@ function filtrerParQuartierDepart(trajets, quartier) {
      * @return {Array} - trajets filtrés
      * Si quartier est vide ou null, retourne tous les trajets.
      */
-    // TODO
+    if (!quartier) return trajets;
+    return trajets.filter(trajet => trajet.quartier_depart === quartier);
 }
 
 function rechercherParMotCle(trajets, motCle) {
@@ -63,7 +64,17 @@ function rechercherParMotCle(trajets, motCle) {
      * @return {Array} - trajets correspondants
      * Si motCle est vide, retourne tous les trajets.
      */
-    // TODO
+    const recherche = (motCle || "").trim().toLowerCase();
+    if (!recherche) return trajets;
+
+    return trajets.filter(trajet => {
+        const depart = (trajet.quartier_depart || "").toLowerCase();
+        const arrivee = (trajet.quartier_arrivee || "").toLowerCase();
+        const commentaire = (trajet.commentaire || "").toLowerCase();
+        return depart.includes(recherche)
+            || arrivee.includes(recherche)
+            || commentaire.includes(recherche);
+    });
 }
 
 // ============================================================================
