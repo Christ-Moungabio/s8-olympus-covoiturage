@@ -146,7 +146,7 @@
   transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.carte-reservation:hover {
+.carte-reservation::before {
     content: "";
 
     display: block;
@@ -159,7 +159,7 @@
 }
 
 .carte-reservation:hover {
-  transform: translateY(-6px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
 }
 
