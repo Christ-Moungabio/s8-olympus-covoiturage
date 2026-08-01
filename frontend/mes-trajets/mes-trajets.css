@@ -166,7 +166,7 @@
 .carte-reservation h3 {
   margin: 0;
   font-size: 20px;
-  color: var(color-heading-band);
+  color: var(--color-heading-band);
   letter-spacing: -0.3px;
 
 }
@@ -180,7 +180,7 @@
 
 }
 
-.carte-reservation p :last-of-type{
+.carte-reservation p:last-of-type{
     color: var(--color-text);
     font-weight: 700;
 }
