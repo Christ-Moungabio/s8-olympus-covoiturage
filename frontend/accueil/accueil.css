@@ -55,6 +55,17 @@
   align-items: center;
   gap: 8px;
 }
+.login-btn {
+  padding: 10px 14px;
+  border-radius: 11px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.login-btn:hover {
+  background: var(--color-bg);
+}
+
 @media (min-width: 960px) {
   .nav {
     display: flex;
@@ -90,221 +101,6 @@
 @media (min-width: 960px) {
   .menu-btn {
     display: none;
-  }
-}
-
-/* ── Hero (page d'accueil) ──────────────────────────────────────────────── */
-.hero {
-  position: relative;
-  overflow: hidden;
-}
-.hero-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(15, 23, 42, 0.78),
-    rgba(15, 23, 42, 0.55) 45%,
-    rgba(15, 23, 42, 0.88)
-  );
-}
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 56px 20px 36px;
-  color: #fff;
-}
-
-.hero-greeting {
-  font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.8);
-  margin: 0 0 12px;
-}
-.hero-greeting span {
-  font-weight: 600;
-  color: #fff;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  font-size: 13px;
-  font-weight: 600;
-  margin: 0 0 18px;
-}
-.hero-badge-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--color-accent);
-}
-
-.hero-title {
-  font-size: clamp(28px, 5vw, 46px);
-  line-height: 1.12;
-  margin: 0 0 16px;
-  max-width: 680px;
-}
-.hero-desc {
-  font-size: 15.5px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
-  max-width: 560px;
-  margin: 0 0 32px;
-}
-
-/* ── Formulaire de recherche rapide ─────────────────────────────────────── */
-.search-form {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  background: var(--color-surface);
-  border-radius: 16px;
-  padding: 16px;
-  box-shadow: var(--shadow-lg);
-  color: var(--color-text);
-}
-.search-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.search-field label {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--color-text-muted);
-}
-.search-input {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-}
-.search-input img {
-  width: 16px;
-  height: 16px;
-  opacity: 0.55;
-}
-.search-input select,
-.search-input input {
-  flex: 1;
-  min-width: 0;
-  border: 0;
-  outline: 0;
-  background: none;
-  font: inherit;
-  color: inherit;
-}
-
-.pax-control {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 10px;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-}
-.pax-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.pax-btn:hover {
-  background: var(--color-bg);
-}
-.pax-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-.pax-btn:disabled:hover {
-  background: none;
-}
-.pax-btn img {
-  width: 14px;
-  height: 14px;
-}
-.pax-value {
-  font-weight: 700;
-  min-width: 18px;
-  text-align: center;
-}
-
-.search-submit {
-  width: 100%;
-}
-
-@media (min-width: 640px) {
-  .search-form {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (min-width: 960px) {
-  .hero-content {
-    padding: 96px 24px 64px;
-  }
-  .search-form {
-    grid-template-columns: repeat(5, 1fr) auto;
-    align-items: end;
-  }
-  .search-submit {
-    width: auto;
-    white-space: nowrap;
-  }
-}
-
-/* ── Entrée en fondu du contenu hero ─────────────────────────────────────── */
-@keyframes hero-rise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.hero-content > * {
-  animation: hero-rise 0.5s ease both;
-}
-.hero-content > *:nth-child(1) {
-  animation-delay: 0s;
-}
-.hero-content > *:nth-child(2) {
-  animation-delay: 0.08s;
-}
-.hero-content > *:nth-child(3) {
-  animation-delay: 0.16s;
-}
-.hero-content > *:nth-child(4) {
-  animation-delay: 0.24s;
-}
-.hero-content > *:nth-child(5) {
-  animation-delay: 0.32s;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-content > * {
-    animation: none;
   }
 }
 
@@ -349,36 +145,6 @@
   width: 100%;
   justify-content: center;
 }
-
-/* ── État de session dupliqué (accueil.js → #nav-session-mobile) ───────── */
-#nav-session-mobile {
-  color: var(--color-text-muted);
-  font-weight: 600;
-  text-align: center;
-}
-#nav-session-mobile a,
-#nav-session-mobile button {
-  padding: 14px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-}
-#nav-session-mobile a:hover,
-#nav-session-mobile button:hover {
-  background: var(--color-bg);
-}
-#nav-session-mobile a:last-of-type,
-#nav-session-mobile button {
-  background: var(--color-primary);
-  color: #fff;
-  border-color: transparent;
-}
-#nav-session-mobile a:last-of-type:hover,
-#nav-session-mobile button:hover {
-  background: var(--color-primary-dark);
-}
 .mobile-nav-header {
   display: flex;
   align-items: center;
@@ -413,6 +179,15 @@
 .mobile-nav-link[aria-current="page"] {
   color: var(--color-primary);
 }
+.mobile-nav-cta {
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  background: var(--color-primary);
+  margin-top: auto;
+}
 .mobile-nav-credit {
   font-size: 12.5px;
   color: var(--color-text-muted);
@@ -426,9 +201,15 @@
   }
 }
 
-/* ── État de session (injecté par main.js dans .header-actions) ────────── */
+/* ── État de session (injecté par main.js) ─────────────────────────────── */
 #nav-session {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   gap: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 24px;
   font-size: 14.5px;
   color: var(--color-text-muted);
 }
