@@ -74,10 +74,36 @@
     });
   }
 
+  function initNavSessionMobile() {
+    // #nav-session est rempli par initNavSession() dans main.js, qui
+    // s'exécute dans un autre listener DOMContentLoaded enregistré après
+    // celui-ci : on observe donc les mutations au lieu de lire une valeur
+    // qui n'existerait pas encore au moment où ce listener se déclenche.
+    const source = document.getElementById("nav-session");
+    const target = document.getElementById("nav-session-mobile");
+    if (!source || !target) return;
+
+    const sync = () => {
+      target.innerHTML = source.innerHTML;
+      const btnDeconnexion = target.querySelector("#btn-deconnexion");
+      if (btnDeconnexion) {
+        btnDeconnexion.removeAttribute("id");
+        btnDeconnexion.addEventListener("click", () => {
+          clearSession();
+          window.location.reload();
+        });
+      }
+    };
+
+    sync();
+    new MutationObserver(sync).observe(source, { childList: true });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     initTheme();
     initThemeToggle();
     initMobileMenu();
     markActiveNavLinks();
+    initNavSessionMobile();
   });
 })();

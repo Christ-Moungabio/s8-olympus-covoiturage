@@ -1,30 +1,10 @@
 /**
  * accueil.js — Comportements propres à la page d'accueil :
- * - duplique l'état de session (#nav-session, rempli par main.js) dans le
- *   menu burger mobile (#nav-session-mobile)
  * - câble le compteur de passagers et la date par défaut du hero
  */
 document.addEventListener("DOMContentLoaded", () => {
-    initNavSessionMobile();
     initHeroSearchForm();
 });
-
-function initNavSessionMobile() {
-    const source = document.getElementById("nav-session");
-    const target = document.getElementById("nav-session-mobile");
-    if (!source || !target) return;
-
-    target.innerHTML = source.innerHTML;
-
-    const btnDeconnexion = target.querySelector("#btn-deconnexion");
-    if (btnDeconnexion) {
-        btnDeconnexion.removeAttribute("id");
-        btnDeconnexion.addEventListener("click", () => {
-            clearSession();
-            window.location.reload();
-        });
-    }
-}
 
 function initHeroSearchForm() {
     const dateInput = document.querySelector("[data-today-default]");
