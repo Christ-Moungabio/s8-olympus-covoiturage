@@ -1,49 +1,276 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BraCovoit — Connexion</title>
-  <link rel="stylesheet" href="login.css">
-</head>
-<body id="page-login">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BraCovoit — Connexion</title>
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="../layout.css" />
+  </head>
+  <body id="page-login">
+    <!-- NAVIGATION — TODO (Dev FS7) -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="index.html" class="brand" aria-label="Covoiturage — accueil">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 32 32"
+            fill="none"
+            aria-hidden="true"
+          >
+            <rect width="32" height="32" rx="10" fill="#2563EB"></rect>
+            <path
+              d="M11 21.5 L21 10.5"
+              stroke="#FFFFFF"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              opacity="0.9"
+            ></path>
+            <circle cx="11" cy="21.5" r="3.4" fill="#FFFFFF"></circle>
+            <circle cx="21" cy="10.5" r="3.4" fill="#F59E0B"></circle>
+          </svg>
+          <span class="brand-name">Tokende</span>
+        </a>
 
-  <!-- NAVIGATION — TODO (Dev FS7) -->
+        <nav class="nav" aria-label="Navigation principale">
+          <a href="index.html" class="nav-link" data-nav-link>Accueil</a>
+          <a href="../recherche/recherche.html" class="nav-link" data-nav-link
+            >Recherche</a
+          >
+          <a href="../proposer/proposer.html" class="nav-link" data-nav-link
+            >Proposer un trajet</a
+          >
+          <a
+            href="../mes-trajets/mes-trajets.html"
+            class="nav-link"
+            data-nav-link
+            >Mes trajets</a
+          >
+          <a href="../dashboard/dashboard.html" class="nav-link" data-nav-link
+            >Tableau de bord</a
+          >
+        </nav>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+        <div class="spacer"></div>
 
-  <main>
-    <!-- =====================================================================
-         FORMULAIRE — TODO (Dev FS7)
-         Mettre en forme le formulaire de connexion : téléphone, mot de
-         passe. Prévoir un layout clair en colonne, avec des labels
-         visibles pour chaque champ.
+        <button
+          type="button"
+          class="theme-btn"
+          data-theme-toggle
+          aria-label="Changer de thème"
+        >
+          <span aria-hidden="true">
+            <img src="../images/moon.svg" alt="" />
+          </span>
+          <span aria-hidden="true">
+            <img src="../images/sun.svg" alt="" />
+          </span>
+        </button>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-    <form id="form-login">
-      <label for="l-telephone">Téléphone</label>
-      <input type="tel" id="l-telephone" placeholder="066123456">
+        <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+        <div class="header-actions" id="nav-session"></div>
 
-      <label for="l-mot-de-passe">Mot de passe</label>
-      <input type="password" id="l-mot-de-passe">
+        <button
+          type="button"
+          class="menu-btn"
+          data-mobile-menu-open
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Ouvrir le menu"
+        >
+          <img src="../images/menu.svg" alt="" />
+        </button>
+      </div>
+    </header>
 
-      <button type="submit">Se connecter</button>
-    </form>
+    <div class="mobile-nav" id="mobile-menu" data-mobile-menu hidden>
+      <div
+        class="mobile-nav-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+      >
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button
+            type="button"
+            class="mobile-nav-close"
+            data-mobile-menu-close
+            aria-label="Fermer le menu"
+          >
+            <img src="../images/x.svg" aria-hidden="true" alt="" />
+          </button>
+        </div>
 
-    <!-- Zone d'erreurs de validation — TODO (Dev FS7) : mettre en forme la
-         liste <ul><li> injectée par main.js en cas de formulaire invalide.
-         NE PAS MODIFIER l'id. -->
-    <div id="erreurs-form" hidden></div>
+        <div class="mobile-nav-inner">
+          <a href="index.html" class="mobile-nav-link" data-nav-link>Accueil</a>
+          <a
+            href="../recherche/recherche.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Recherche</a
+          >
+          <a
+            href="../proposer/proposer.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Proposer un trajet</a
+          >
+          <a
+            href="../mes-trajets/mes-trajets.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Mes trajets</a
+          >
+          <a
+            href="../dashboard/dashboard.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Tableau de bord</a
+          >
+        </div>
 
-    <!-- LIEN VERS INSCRIPTION — TODO (Dev FS7) : lien "Pas encore de compte ?
-         S'inscrire" pointant vers ../inscription/inscription.html -->
-  </main>
+        <!-- Contenu dupliqué depuis #nav-session par accueil.js -->
+        <div class="mobile-header-actions" id="nav-session-mobile"></div>
 
-  <div id="erreur-globale" hidden></div>
+        <p class="mobile-nav-credit">Covoiturage · votre ville</p>
+      </div>
+    </div>
 
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+    <main class="auth-main">
+      <div class="auth-card">
+        <h1 class="auth-title">Connexion</h1>
+        <p class="auth-subtitle">
+          Accédez à votre compte pour réserver ou proposer un trajet.
+        </p>
+
+        <!-- =====================================================================
+           FORMULAIRE — TODO (Dev FS7)
+           Mettre en forme le formulaire de connexion : téléphone, mot de
+           passe. Prévoir un layout clair en colonne, avec des labels
+           visibles pour chaque champ.
+
+           *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+           ===================================================================== -->
+        <form id="form-login" class="auth-form">
+          <div class="form-field">
+            <label for="l-telephone">Téléphone</label>
+            <input type="tel" id="l-telephone" placeholder="066123456" />
+          </div>
+
+          <div class="form-field">
+            <label for="l-mot-de-passe">Mot de passe</label>
+            <input type="password" id="l-mot-de-passe" />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            Se connecter
+          </button>
+        </form>
+
+        <!-- Zone d'erreurs de validation — TODO (Dev FS7) : mettre en forme la
+           liste <ul><li> injectée par main.js en cas de formulaire invalide.
+           NE PAS MODIFIER l'id. -->
+        <div id="erreurs-form" class="form-errors" hidden></div>
+
+        <!-- LIEN VERS INSCRIPTION — TODO (Dev FS7) : lien "Pas encore de compte ?
+           S'inscrire" pointant vers ../inscription/inscription.html -->
+        <p class="auth-switch">
+          Pas encore de compte ?
+          <a href="../inscription/inscription.html">S'inscrire</a>
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a
+              href="index.html"
+              class="brand"
+              aria-label="Covoiturage — accueil"
+            >
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 32 32"
+                fill="none"
+                aria-hidden="true"
+              >
+                <rect width="32" height="32" rx="10" fill="#2563EB"></rect>
+                <path
+                  d="M11 21.5 L21 10.5"
+                  stroke="#FFFFFF"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  opacity="0.9"
+                ></path>
+                <circle cx="11" cy="21.5" r="3.4" fill="#FFFFFF"></circle>
+                <circle cx="21" cy="10.5" r="3.4" fill="#F59E0B"></circle>
+              </svg>
+              <span class="brand-name">Tokende</span>
+            </a>
+            <p class="footer-desc">
+              « Tokende » veut dire <em>on y va</em> en lingala. Le covoiturage
+              de quartier à quartier, pensé pour Brazzaville et la République du
+              Congo.
+            </p>
+          </div>
+
+          <div class="footer-columns">
+            <div class="footer-col">
+              <h3 class="footer-heading">Plateforme</h3>
+              <ul>
+                <li>
+                  <a href="../recherche/recherche.html">Rechercher un trajet</a>
+                </li>
+                <li>
+                  <a href="../proposer/proposer.html">Proposer un trajet</a>
+                </li>
+                <li><a href="#">Conducteurs vérifiés</a></li>
+                <li><a href="#">Tarifs et paiement</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-heading">Quartiers</h3>
+              <ul>
+                <li>Poto-Poto · Ouenzé</li>
+                <li>Bacongo · Makélékélé</li>
+                <li>Talangaï · Djiri</li>
+                <li>Moungali · Centre-ville</li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-heading">Assistance</h3>
+              <ul>
+                <li><a href="#">Centre d'aide</a></li>
+                <li><a href="#">Sécurité et assurance</a></li>
+                <li><a href="tel:+242060000000">+242 06 000 00 00</a></li>
+                <li>
+                  <a href="mailto:bonjour@tokende.cg">bonjour@tokende.cg</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Tokende — Brazzaville, République du Congo</p>
+          <p class="footer-legal">
+            <a href="#">Conditions générales</a> ·
+            <a href="#">Confidentialité</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="erreur-globale" hidden></div>
+
+    <script src="../layout.js"></script>
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>

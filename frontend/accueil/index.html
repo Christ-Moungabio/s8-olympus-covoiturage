@@ -159,12 +159,9 @@
 
         <div class="hero-content">
           <p class="hero-greeting">
-            Mbote na bino ! <span>Boyei elamu na Tokende</span> — bienvenue.
+            Mbote na bino ! <span>Boyei elamu na Tokende</span> bienvenue.
           </p>
-          <p class="hero-badge">
-            <span class="hero-badge-dot" aria-hidden="true"></span>
-            Covoiturage urbain · Brazzaville
-          </p>
+          <p class="hero-badge">Covoiturage urbain · Brazzaville</p>
           <h1 class="hero-title">Un seul trajet, d'un quartier à l'autre.</h1>
           <p class="hero-desc">
             Tokende relie les conducteurs qui roulent déjà aux passagers qui
@@ -274,7 +271,7 @@
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise pour
          injecter les valeurs calculées par le backend ***
          ===================================================================== -->
-      <section>
+      <section class="stats">
         <div class="carte-indicateur">
           <p class="label">Trajets aujourd'hui</p>
           <p id="nb-trajets-aujourdhui" class="valeur"></p>
@@ -299,15 +296,258 @@
          trajet → réserver une place → rejoindre le conducteur. Layout en
          ligne sur desktop, empilé sur mobile.
          ===================================================================== -->
+      <section class="steps" aria-labelledby="how-it-works-title">
+        <div class="steps-grid">
+          <div>
+            <p class="steps-label">Comment ça marche</p>
+            <h2 class="steps-title" id="how-it-works-title">
+              Trois étapes, deux minutes
+            </h2>
+            <ol class="steps-list">
+              <li class="step">
+                <span class="step-num" aria-hidden="true">1</span>
+                <div>
+                  <p class="step-title">Indiquez votre direction</p>
+                  <p class="step-text">
+                    Départ, destination, date et nombre de places. Tokende
+                    affiche les trajets qui passent près de chez vous.
+                  </p>
+                </div>
+              </li>
+              <li class="step">
+                <span class="step-num" aria-hidden="true">2</span>
+                <div>
+                  <p class="step-title">Choisissez votre conducteur</p>
+                  <p class="step-text">
+                    Comparez les prix, horaires, véhicules et avis, puis
+                    réservez en un geste.
+                  </p>
+                </div>
+              </li>
+              <li class="step">
+                <span class="step-num" aria-hidden="true">3</span>
+                <div>
+                  <p class="step-title">Retrouvez-vous et partez</p>
+                  <p class="step-text">
+                    Point de rendez-vous confirmé, billet avec QR code, paiement
+                    mobile ou en espèces à bord.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div class="steps-image">
+            <img
+              src="https://images.unsplash.com/photo-1536139414673-1b479272ea38?auto=format&fit=crop&w=1200&q=80"
+              alt="Passager souriant montant à bord d'un véhicule Tokende"
+            />
+            <div class="steps-card">
+              <span class="steps-card-icon" aria-hidden="true">
+                <img src="../images/check.svg" alt="" />
+              </span>
+              <div>
+                <p class="steps-card-title">Trajet confirmé · 800 FCFA</p>
+                <p class="steps-card-sub">Poto-Poto → Talangaï · 07:30</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- =====================================================================
          POURQUOI BRACOVOIT — TODO (Dev FS1)
          3 arguments clés (économique, écologique, communautaire par
          exemple). Layout en grille de cartes.
          ===================================================================== -->
+      <section class="features" aria-labelledby="features-title">
+        <h2 class="features-title" id="features-title">
+          Pourquoi les Brazzavillois choisissent Tokende
+        </h2>
+        <p class="features-desc">
+          Se déplacer entre Bacongo et Talangaï demande souvent deux ou trois
+          moyens de transport, avec des coûts et des attentes imprévisibles.
+          Tokende remplace cette chaîne par un trajet unique, réservé à
+          l'avance.
+        </p>
+
+        <ul class="features-grid">
+          <li class="feature">
+            <span class="feature-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="6" width="18" height="13" rx="2" />
+                <path d="M3 10h18" />
+                <circle
+                  cx="17"
+                  cy="14.5"
+                  r="1.1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </span>
+            <p class="feature-title">Prix connu à l'avance</p>
+            <p class="feature-text">
+              Le tarif en FCFA est affiché avant la réservation et ne change
+              plus. Aucune négociation au bord de la route.
+            </p>
+          </li>
+          <li class="feature">
+            <span class="feature-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+                <path d="M9 12l2 2 4-4" />
+              </svg>
+            </span>
+            <p class="feature-title">Conducteurs vérifiés</p>
+            <p class="feature-text">
+              Pièce d'identité, permis et carte grise contrôlés. Chaque profil
+              affiche les avis réels des passagers.
+            </p>
+          </li>
+          <li class="feature">
+            <span class="feature-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="6" cy="18" r="2.5" />
+                <circle cx="18" cy="6" r="2.5" />
+                <path d="M8.2 17c4.8 0 2.8-10 7.6-10" />
+              </svg>
+            </span>
+            <p class="feature-title">Un seul trajet</p>
+            <p class="feature-text">
+              De Poto-Poto à Talangaï sans correspondance ni attente au
+              rond-point : vous montez, vous arrivez.
+            </p>
+          </li>
+          <li class="feature">
+            <span class="feature-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </span>
+            <p class="feature-title">Points de rendez-vous clairs</p>
+            <p class="feature-text">
+              Marchés, ronds-points et stations connus de tous, confirmés avec
+              le conducteur avant le départ.
+            </p>
+          </li>
+        </ul>
+      </section>
     </main>
 
     <!-- FOOTER — TODO (Dev FS1) : liens utiles, mentions -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a
+              href="index.html"
+              class="brand"
+              aria-label="Covoiturage — accueil"
+            >
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 32 32"
+                fill="none"
+                aria-hidden="true"
+              >
+                <rect width="32" height="32" rx="10" fill="#2563EB"></rect>
+                <path
+                  d="M11 21.5 L21 10.5"
+                  stroke="#FFFFFF"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  opacity="0.9"
+                ></path>
+                <circle cx="11" cy="21.5" r="3.4" fill="#FFFFFF"></circle>
+                <circle cx="21" cy="10.5" r="3.4" fill="#F59E0B"></circle>
+              </svg>
+              <span class="brand-name">Tokende</span>
+            </a>
+            <p class="footer-desc">
+              « Tokende » veut dire <em>on y va</em> en lingala. Le covoiturage
+              de quartier à quartier, pensé pour Brazzaville et la République du
+              Congo.
+            </p>
+          </div>
+
+          <div class="footer-columns">
+            <div class="footer-col">
+              <h3 class="footer-heading">Plateforme</h3>
+              <ul>
+                <li>
+                  <a href="../recherche/recherche.html">Rechercher un trajet</a>
+                </li>
+                <li>
+                  <a href="../proposer/proposer.html">Proposer un trajet</a>
+                </li>
+                <li><a href="#">Conducteurs vérifiés</a></li>
+                <li><a href="#">Tarifs et paiement</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-heading">Quartiers</h3>
+              <ul>
+                <li>Poto-Poto · Ouenzé</li>
+                <li>Bacongo · Makélékélé</li>
+                <li>Talangaï · Djiri</li>
+                <li>Moungali · Centre-ville</li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-heading">Assistance</h3>
+              <ul>
+                <li><a href="#">Centre d'aide</a></li>
+                <li><a href="#">Sécurité et assurance</a></li>
+                <li><a href="tel:+242060000000">+242 06 000 00 00</a></li>
+                <li>
+                  <a href="mailto:bonjour@tokende.cg">bonjour@tokende.cg</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Tokende — Brazzaville, République du Congo</p>
+          <p class="footer-legal">
+            <a href="#">Conditions générales</a> ·
+            <a href="#">Confidentialité</a>
+          </p>
+        </div>
+      </div>
+    </footer>
 
     <div id="erreur-globale" hidden></div>
 
