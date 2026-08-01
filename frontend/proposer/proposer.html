@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BraCovoit — Proposer un trajet</title>
+  <link rel="stylesheet" href="../layout.css">
   <link rel="stylesheet" href="proposer.css">
 </head>
 <body id="page-proposer">
@@ -14,6 +15,19 @@
   <div id="nav-session"></div>
 
   <main>
+    <div class="page-header">
+      <span class="page-icon" aria-hidden="true">
+        <svg class="page-icon-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+      </span>
+      <div>
+        <h1>Proposer un trajet</h1>
+        <p class="page-subtitle">Indiquez votre trajet et vos disponibilités : les passagers pourront le réserver en quelques clics.</p>
+      </div>
+    </div>
+
     <!-- =====================================================================
          FORMULAIRE — TODO (Dev FS4)
          Mettre en forme le formulaire de proposition de trajet : les deux
@@ -24,23 +38,73 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <form id="form-proposer">
-      <label for="p-depart">Quartier de départ</label>
-      <select id="p-depart"></select>
+    <form id="form-proposer" class="form-card">
+      <div class="route-group">
+        <div class="field">
+          <label for="p-depart">Quartier de départ</label>
+          <div class="select-wrap select-wrap--pin">
+            <svg class="select-icon-pin" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <select id="p-depart"></select>
+            <svg class="select-icon-chevron" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </div>
+        </div>
 
-      <label for="p-arrivee">Quartier d'arrivée</label>
-      <select id="p-arrivee"></select>
+        <div class="route-divider" aria-hidden="true">
+          <svg class="route-divider-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </div>
 
-      <label for="p-heure">Heure (HH:MM)</label>
-      <input type="text" id="p-heure" placeholder="07:30">
+        <div class="field">
+          <label for="p-arrivee">Quartier d'arrivée</label>
+          <div class="select-wrap select-wrap--pin">
+            <svg class="select-icon-pin" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <select id="p-arrivee"></select>
+            <svg class="select-icon-chevron" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </div>
+        </div>
+      </div>
 
-      <label for="p-places">Places disponibles</label>
-      <input type="number" id="p-places" min="1" max="8">
+      <div class="field">
+        <label for="p-heure">Heure de départ</label>
+        <input type="time" id="p-heure">
+        <small class="field-hint">Sélectionnez l'heure de départ</small>
+      </div>
 
-      <label for="p-prix">Prix par place (FCFA)</label>
-      <input type="number" id="p-prix" min="1">
+      <div class="field-row">
+        <div class="field">
+          <label for="p-places">Places disponibles</label>
+          <input type="number" id="p-places" min="1" max="8">
+          <small class="field-hint">Entre 1 et 8 places</small>
+        </div>
 
-      <button type="submit">Publier mon trajet</button>
+        <div class="field">
+          <label for="p-prix">Prix par place (FCFA)</label>
+          <input type="number" id="p-prix" min="1">
+          <small class="field-hint">Montant libre</small>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">
+        <span>Publier mon trajet</span>
+        <svg class="btn-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </button>
     </form>
 
     <!-- Zone d'erreurs de validation — TODO (Dev FS4) : mettre en forme la
@@ -50,6 +114,28 @@
 
     <!-- BLOC D'AIDE — TODO (Dev FS4) : encart explicatif optionnel
          (ex. rappel que le prix est libre, conseils de sécurité) -->
+    <div class="help-card">
+      <h2 class="help-card-title">
+        <svg class="help-card-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+        Bon à savoir
+      </h2>
+      <ul class="help-card-list">
+        <li>
+          <svg class="help-card-check" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+          <span>Le prix par place est libre : ajustez-le selon vos frais d'essence, sans obligation de faire du profit.</span>
+        </li>
+        <li>
+          <svg class="help-card-check" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+          <span>Vérifiez l'identité de vos passagers et privilégiez un point de rendez-vous public et fréquenté.</span>
+        </li>
+        <li>
+          <svg class="help-card-check" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+          <span>Ne partagez vos informations personnelles qu'après confirmation de la réservation.</span>
+        </li>
+      </ul>
+    </div>
   </main>
 
   <div id="erreur-globale" hidden></div>
