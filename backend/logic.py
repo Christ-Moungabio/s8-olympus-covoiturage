@@ -294,7 +294,11 @@ def historique_reservations_passager(passager_tel, reservations):
         -> [{"id": 1, "passager_tel": "067111222"}, {"id": 3, "passager_tel": "067111222"}]
     """
     # TODO : à compléter
-    pass
+    resultat = []
+    for reservation in reservations:
+        if reservation["passager_tel"] == passager_tel:
+            resultat.append(reservation)
+    return resultat
 
 
 def calculer_taux_annulation(reservations):
