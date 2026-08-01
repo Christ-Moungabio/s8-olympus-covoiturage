@@ -203,10 +203,6 @@ main {
   margin-bottom: 10px;
 }
 
-.mini-carte-svg {
-  width: 100%;
-  height: auto;
-}
 
 /* Zone de résultats  */
 .contenu-resultats {
@@ -266,7 +262,7 @@ main {
 .carte-trajet {
   display: flex;
   flex-direction: column;
-  
+
   gap: 18px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -320,8 +316,45 @@ main {
 .carte-trajet .badge {
   align-self: flex-end;
   margin-top: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
 }
 
+.badge-dispo {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.badge-limite {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.badge-complet {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+.aucun-resultat {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 24px 20px;
+  border: 1px dashed var(--color-border);
+  border-radius: 20px;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+.tri-btn:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+}
 
 
 /* Bouton  */
