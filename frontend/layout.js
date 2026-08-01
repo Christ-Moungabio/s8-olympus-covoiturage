@@ -15,20 +15,16 @@
   function initMobileMenu() {
     const menu = document.querySelector("[data-mobile-menu]");
     const openButton = document.querySelector("[data-mobile-menu-open]");
-    console.log("openBoutton :", openButton);
-
     const closeButton = document.querySelector("[data-mobile-menu-close]");
     if (!menu || !openButton) return;
 
     const open = () => {
       menu.hidden = false;
       openButton.setAttribute("aria-expanded", "true");
-      console.log("open menu");
     };
     const close = () => {
       menu.hidden = true;
       openButton.setAttribute("aria-expanded", "false");
-      console.log("close menu");
     };
 
     openButton.addEventListener("click", open);
@@ -69,8 +65,9 @@
   function markActiveNavLinks() {
     const currentPage = location.pathname.split("/").pop() || "index.html";
     document.querySelectorAll("[data-nav-link]").forEach((link) => {
-      const href = link.getAttribute("href");
-      if (href === currentPage) link.setAttribute("aria-current", "page");
+      const href = link.getAttribute("href") || "";
+      const hrefPage = href.split("/").pop();
+      if (hrefPage === currentPage) link.setAttribute("aria-current", "page");
     });
   }
 

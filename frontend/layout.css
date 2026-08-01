@@ -8,6 +8,7 @@
 /* ── Thème (clair / sombre) ────────────────────────────────────────────── */
 :root {
   color-scheme: light;
+  --header-height: 64px;
   --color-bg: #F8FAFC;
   --color-surface: #FFFFFF;
   --color-surface-alt: #EEF5FF;
@@ -105,7 +106,8 @@
   background: var(--color-bg);
 }
 .nav-link[aria-current="page"] {
-  color: var(--color-text);
+  color: var(--color-primary);
+  background: var(--color-bg);
 }
 
 .header-actions {
