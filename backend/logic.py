@@ -259,7 +259,25 @@ def verifier_place_disponible(trajet_id, trajets, reservations):
         il en reste 1)
     """
     # TODO : à compléter
-    pass
+    trajet_trouve = None
+    for trajet in trajets:
+        if trajet.get("id") == trajet_id:
+         trajet_trouve = trajet
+
+    if trajet_trouve is None:
+        return {"place_dispo": False, "places_restantes": 0, "message": "Trajet introuvable"}
+
+    reservations_actives = 0
+    for reservation in reservations:
+        if reservation.get("trajet_id") == trajet_id and reservation.get("statut") != "annule":
+         reservations_actives += 1
+
+    places_restantes = trajet_trouve.get("places_dispo", 0) - reservations_actives
+
+    if places_restantes >= 1:
+        return {"place_dispo": True, "places_restantes": places_restantes, "message": ""}
+    else:
+        return {"place_dispo": False, "places_restantes": 0, "message": "Trajet complet"}
 
 
 def filtrer_reservations_par_statut(reservations, statut):
