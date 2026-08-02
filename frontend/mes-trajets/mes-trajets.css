@@ -43,10 +43,6 @@ main {
   color: var(--color-text-muted);
 }
 
-.barre-recherche-tel select {
-  appearance: none;
-}
-
 .barre-recherche-tel input:focus,
 .barre-recherche-tel select:focus {
   outline: none;
