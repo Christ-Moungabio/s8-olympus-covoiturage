@@ -159,12 +159,29 @@
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
       <section class="entete-trajet">
-        <h1 id="trajet-titre"></h1>
-        <p>Heure : <span id="trajet-heure"></span></p>
-        <p>Date : <span id="trajet-date"></span></p>
-        <p>Prix : <span id="trajet-prix"></span></p>
-        <p>Commentaire : <span id="trajet-commentaire"></span></p>
-        <span id="badge-places" class="badge"></span>
+        <div class="entete-trajet-top">
+          <h1 id="trajet-titre"></h1>
+          <span id="badge-places" class="badge"></span>
+        </div>
+
+        <div class="trajet-infos">
+          <div class="trajet-info-item">
+            <span class="trajet-info-label">Heure</span>
+            <span id="trajet-heure" class="trajet-info-valeur"></span>
+          </div>
+          <div class="trajet-info-item">
+            <span class="trajet-info-label">Date</span>
+            <span id="trajet-date" class="trajet-info-valeur"></span>
+          </div>
+          <div class="trajet-info-item">
+            <span class="trajet-info-label">Prix</span>
+            <span id="trajet-prix" class="trajet-info-valeur"></span>
+          </div>
+        </div>
+
+        <p class="trajet-commentaire">
+          Commentaire : <span id="trajet-commentaire"></span>
+        </p>
       </section>
 
       <!-- =====================================================================
@@ -176,10 +193,24 @@
          ===================================================================== -->
       <section class="fiche-conducteur">
         <h2>Conducteur</h2>
-        <p>Nom : <span id="conducteur-nom"></span></p>
-        <p>Véhicule : <span id="conducteur-vehicule"></span></p>
-        <p>Note : <span id="conducteur-note"></span></p>
-        <p>Expérience : <span id="conducteur-trajets"></span></p>
+        <div class="conducteur-grille">
+          <div class="conducteur-info">
+            <span class="conducteur-label">Nom</span>
+            <span id="conducteur-nom" class="conducteur-valeur"></span>
+          </div>
+          <div class="conducteur-info">
+            <span class="conducteur-label">Véhicule</span>
+            <span id="conducteur-vehicule" class="conducteur-valeur"></span>
+          </div>
+          <div class="conducteur-info">
+            <span class="conducteur-label">Note</span>
+            <span id="conducteur-note" class="conducteur-valeur"></span>
+          </div>
+          <div class="conducteur-info">
+            <span class="conducteur-label">Expérience</span>
+            <span id="conducteur-trajets" class="conducteur-valeur"></span>
+          </div>
+        </div>
       </section>
 
       <!-- =====================================================================
