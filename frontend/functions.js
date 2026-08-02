@@ -26,7 +26,7 @@ function compterTrajetsAujourdhui(trajets, dateAujourdhui) {
      * @return {number} - nombre de trajets à cette date
      * Exemple : compterTrajetsAujourdhui([{date:"2026-07-27"},{date:"2026-07-28"}], "2026-07-27") → 1
      */
-    // TODO
+    return trajets.filter(trajet => trajet.date === dateAujourdhui).length;
 }
 
 function formaterQuartierPrincipal(compteParQuartier) {
@@ -36,7 +36,13 @@ function formaterQuartierPrincipal(compteParQuartier) {
      * @return {string} - ex: "Poto-Poto (8 trajets)"
      * Si l'objet est vide, retourne "Aucun trajet".
      */
-    // TODO
+    const quartiers = Object.keys(compteParQuartier);
+    if (quartiers.length === 0) return "Aucun trajet";
+
+    const quartierPrincipal = quartiers.reduce((meilleur, quartier) =>
+        compteParQuartier[quartier] > compteParQuartier[meilleur] ? quartier : meilleur
+    );
+    return `${quartierPrincipal} (${compteParQuartier[quartierPrincipal]} trajets)`;
 }
 
 // ============================================================================
@@ -228,7 +234,26 @@ function validerFormulaireInscription(formulaire) {
      * - telephone obligatoire, au moins 9 chiffres
      * - mot_de_passe obligatoire, au moins 4 caractères
      */
-    // TODO
+    const erreurs = [];
+
+    if (!formulaire.nom || formulaire.nom.trim() === "") {
+        erreurs.push("Le nom est obligatoire");
+    }
+
+    const chiffresTelephone = (formulaire.telephone || "").replace(/\D/g, "");
+    if (!formulaire.telephone) {
+        erreurs.push("Le téléphone est obligatoire");
+    } else if (chiffresTelephone.length < 9) {
+        erreurs.push("Le téléphone doit contenir au moins 9 chiffres");
+    }
+
+    if (!formulaire.mot_de_passe) {
+        erreurs.push("Le mot de passe est obligatoire");
+    } else if (formulaire.mot_de_passe.length < 4) {
+        erreurs.push("Le mot de passe doit contenir au moins 4 caractères");
+    }
+
+    return { valide: erreurs.length === 0, erreurs };
 }
 
 function validerFormulaireLogin(formulaire) {
@@ -241,7 +266,17 @@ function validerFormulaireLogin(formulaire) {
      * - telephone obligatoire
      * - mot_de_passe obligatoire
      */
-    // TODO
+    const erreurs = [];
+
+    if (!formulaire.telephone) {
+        erreurs.push("Le téléphone est obligatoire");
+    }
+
+    if (!formulaire.mot_de_passe) {
+        erreurs.push("Le mot de passe est obligatoire");
+    }
+
+    return { valide: erreurs.length === 0, erreurs };
 }
 
 // ============================================================================
