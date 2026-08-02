@@ -1,0 +1,322 @@
+/* =====================================================
+   BraCovoit - Page détail d'un trajet
+   Dev FS3
+===================================================== */
+
+/* ==========================
+   CONTENU PRINCIPAL
+========================== */
+
+main {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+/* ==========================
+   ENTÊTE DU TRAJET
+========================== */
+
+.entete-trajet {
+  width: 100%;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 32px;
+}
+
+.entete-trajet-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.entete-trajet h1 {
+  color: var(--color-heading-band);
+  font-size: 32px;
+  margin: 0;
+}
+
+/* Ligne de statistiques Heure / Date / Prix */
+.trajet-infos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.trajet-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  min-width: 120px;
+  flex: 1 1 auto;
+
+  padding: 12px 18px;
+  background: var(--color-surface-alt);
+  border-radius: 14px;
+}
+
+.trajet-info-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.trajet-info-valeur {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.trajet-commentaire {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.trajet-commentaire span {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ==========================
+   BADGE DISPONIBILITÉ
+========================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  padding: 8px 18px;
+
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Places disponibles */
+
+.badge-dispo {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Une seule place */
+
+.badge-limite {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Plus aucune place */
+
+.badge-complet {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ==========================
+   FICHE CONDUCTEUR
+========================== */
+
+.fiche-conducteur {
+  width: 100%;
+
+  background: var(--color-card);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 20px;
+
+  padding: 32px;
+
+  box-shadow: var(--shadow-sm);
+
+  margin-bottom: 32px;
+}
+
+.fiche-conducteur h2 {
+  font-size: 24px;
+
+  color: var(--color-heading-band);
+
+  margin: 0 0 20px;
+}
+
+/* Carte profil : 2 colonnes sur desktop, 1 en mobile */
+.conducteur-grille {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 560px) {
+  .conducteur-grille {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.conducteur-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding: 14px 18px;
+  background: var(--color-surface-alt);
+  border-radius: 14px;
+}
+
+.conducteur-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.conducteur-valeur {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ==========================
+   FORMULAIRE RESERVATION
+========================== */
+
+#form-reservation {
+  width: 100%;
+
+  background: var(--color-card);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 20px;
+
+  padding: 32px;
+
+  box-shadow: var(--shadow-sm);
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+#form-reservation label {
+  font-weight: 600;
+
+  color: var(--color-text);
+}
+
+#form-reservation input {
+  width: 100%;
+
+  padding: 14px 16px;
+
+  border-radius: 12px;
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-surface);
+
+  color: var(--color-text);
+
+  font-size: 15px;
+}
+
+#form-reservation input::placeholder {
+  color: var(--color-text-muted);
+}
+
+#form-reservation input:focus {
+  outline: none;
+
+  border-color: var(--color-primary);
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Bouton réservation */
+
+#btn-reserver {
+  margin-top: 16px;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  background: var(--color-primary);
+
+  color: #ffffff;
+
+  font-weight: 700;
+
+  transition: background 0.2s ease;
+}
+
+#btn-reserver:hover {
+  background: var(--color-primary-dark);
+}
+
+#btn-reserver:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+/* ==========================
+   ERREURS FORMULAIRE
+========================== */
+
+#erreurs-form {
+  margin-top: 20px;
+
+  padding: 16px;
+
+  border-radius: 12px;
+
+  background: #fee2e2;
+
+  color: #991b1b;
+}
+
+#erreurs-form ul {
+  margin: 0;
+
+  padding-left: 20px;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 768px) {
+  main {
+    padding: 0 16px;
+
+    margin-top: 24px;
+  }
+
+  .entete-trajet,
+  .fiche-conducteur,
+  #form-reservation {
+    padding: 20px;
+  }
+
+  .entete-trajet h1 {
+    font-size: 24px;
+  }
+}

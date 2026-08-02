@@ -1,49 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BraCovoit — Connexion</title>
-  <link rel="stylesheet" href="login.css">
-</head>
-<body id="page-login">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BraCovoit — Connexion</title>
+    <link rel="stylesheet" href="../layout.css" />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body id="page-login">
+    <!-- NAVIGATION — TODO (Dev FS7) -->
+    <a href="../accueil/index.html" class="retour-accueil"
+      >Retour à l'accueil</a
+    >
 
-  <!-- NAVIGATION — TODO (Dev FS7) -->
+    <div class="mobile-nav" id="mobile-menu" data-mobile-menu hidden>
+      <div
+        class="mobile-nav-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+      >
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button
+            type="button"
+            class="mobile-nav-close"
+            data-mobile-menu-close
+            aria-label="Fermer le menu"
+          >
+            <img src="../images/x.svg" aria-hidden="true" alt="" />
+          </button>
+        </div>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+        <div class="mobile-nav-inner">
+          <a href="../accueil/index.html" class="mobile-nav-link" data-nav-link
+            >Accueil</a
+          >
+          <a
+            href="../recherche/recherche.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Recherche</a
+          >
+          <a
+            href="../proposer/proposer.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Proposer un trajet</a
+          >
+          <a
+            href="../mes-trajets/mes-trajets.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Mes trajets</a
+          >
+          <a
+            href="../dashboard/dashboard.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Tableau de bord</a
+          >
+        </div>
 
-  <main>
-    <!-- =====================================================================
-         FORMULAIRE — TODO (Dev FS7)
-         Mettre en forme le formulaire de connexion : téléphone, mot de
-         passe. Prévoir un layout clair en colonne, avec des labels
-         visibles pour chaque champ.
+        <!-- Contenu dupliqué depuis #nav-session par layout.js -->
+        <div class="mobile-header-actions" id="nav-session-mobile"></div>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-    <form id="form-login">
-      <label for="l-telephone">Téléphone</label>
-      <input type="tel" id="l-telephone" placeholder="066123456">
+        <p class="mobile-nav-credit">Covoiturage · votre ville</p>
+      </div>
+    </div>
 
-      <label for="l-mot-de-passe">Mot de passe</label>
-      <input type="password" id="l-mot-de-passe">
+    <main class="auth-main">
+      <div class="auth-card">
+        <h1 class="auth-title">Connexion</h1>
+        <p class="auth-subtitle">
+          Accédez à votre compte pour réserver ou proposer un trajet.
+        </p>
 
-      <button type="submit">Se connecter</button>
-    </form>
+        <!-- =====================================================================
+           FORMULAIRE — TODO (Dev FS7)
+           Mettre en forme le formulaire de connexion : téléphone, mot de
+           passe. Prévoir un layout clair en colonne, avec des labels
+           visibles pour chaque champ.
 
-    <!-- Zone d'erreurs de validation — TODO (Dev FS7) : mettre en forme la
-         liste <ul><li> injectée par main.js en cas de formulaire invalide.
-         NE PAS MODIFIER l'id. -->
-    <div id="erreurs-form" hidden></div>
+           *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+           ===================================================================== -->
+        <form id="form-login" class="auth-form">
+          <div class="form-field">
+            <label for="l-telephone">Téléphone</label>
+            <input type="tel" id="l-telephone" placeholder="066123456" />
+          </div>
 
-    <!-- LIEN VERS INSCRIPTION — TODO (Dev FS7) : lien "Pas encore de compte ?
-         S'inscrire" pointant vers ../inscription/inscription.html -->
-  </main>
+          <div class="form-field">
+            <label for="l-mot-de-passe">Mot de passe</label>
+            <input type="password" id="l-mot-de-passe" />
+          </div>
 
-  <div id="erreur-globale" hidden></div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Se connecter
+          </button>
+        </form>
 
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+        <!-- Zone d'erreurs de validation — TODO (Dev FS7) : mettre en forme la
+           liste <ul><li> injectée par main.js en cas de formulaire invalide.
+           NE PAS MODIFIER l'id. -->
+        <div id="erreurs-form" class="form-errors" hidden></div>
+
+        <!-- LIEN VERS INSCRIPTION — TODO (Dev FS7) : lien "Pas encore de compte ?
+           S'inscrire" pointant vers ../inscription/inscription.html -->
+        <p class="auth-switch">
+          Pas encore de compte ?
+          <a href="../inscription/inscription.html">S'inscrire</a>
+        </p>
+      </div>
+    </main>
+
+    <div id="erreur-globale" hidden></div>
+
+    <script src="../layout.js"></script>
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>

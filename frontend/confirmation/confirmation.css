@@ -1,0 +1,237 @@
+/* ── Page de confirmation ───────────────────────────────────────────────── */
+.confirmation-main {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 56px 24px 24px;
+}
+
+/* ── Cadre de succès ────────────────────────────────────────────────────── */
+.bloc-confirmation {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: 52px 28px 44px;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Halo vert diffus derrière l'icône */
+.bloc-confirmation::after {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  width: 320px;
+  height: 240px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    closest-side,
+    rgba(16, 185, 129, 0.16),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* Le contenu passe au-dessus du halo décoratif */
+.bloc-confirmation > * {
+  position: relative;
+  z-index: 1;
+}
+
+.confirmation-icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 0 10px rgba(16, 185, 129, 0.14);
+  margin-bottom: 22px;
+  animation: confirmation-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.confirmation-icone img {
+  width: 34px;
+  height: 34px;
+  filter: brightness(0) invert(1);
+}
+
+.bloc-confirmation h1 {
+  font-size: clamp(28px, 4.5vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-text);
+  margin: 0 0 12px;
+}
+
+/* Message injecté par main.js (?msg=) */
+#confirmation-message {
+  max-width: 460px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+#confirmation-message:empty {
+  display: none;
+}
+
+/* ── Prochaines étapes ──────────────────────────────────────────────────── */
+.prochaines-etapes {
+  margin-top: 48px;
+}
+.prochaines-etapes h2 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin: 0 0 18px;
+}
+
+.etapes-grille {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.carte-etape {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-text);
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s,
+    transform 0.15s;
+}
+.carte-etape:hover {
+  color: var(--color-text);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+.carte-etape:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.carte-etape-icone {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--color-surface-alt);
+}
+.carte-etape-icone img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.75;
+}
+:root[data-theme="dark"] .carte-etape-icone img {
+  filter: invert(1);
+}
+
+.carte-etape-texte {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.carte-etape-titre {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.carte-etape-sous {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.carte-etape-fleche {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--color-text-muted);
+  transition:
+    transform 0.15s,
+    color 0.15s;
+}
+.carte-etape:hover .carte-etape-fleche {
+  color: var(--color-primary);
+  transform: translateX(3px);
+}
+
+/* Carte mise en avant : l'étape la plus utile après une réservation */
+.carte-etape-primaire {
+  border-color: var(--color-primary);
+  background: var(--color-surface-alt);
+}
+.carte-etape-primaire .carte-etape-icone {
+  background: var(--color-primary);
+}
+.carte-etape-primaire .carte-etape-icone img {
+  opacity: 1;
+  filter: brightness(0) invert(1);
+}
+:root[data-theme="dark"] .carte-etape-primaire .carte-etape-icone img {
+  filter: brightness(0) invert(1);
+}
+.carte-etape-primaire .carte-etape-fleche {
+  color: var(--color-primary);
+}
+
+/* ── Écrans larges : les 3 étapes côte à côte ───────────────────────────── */
+@media (min-width: 720px) {
+  .etapes-grille {
+    flex-direction: row;
+  }
+  .carte-etape {
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 22px 20px;
+  }
+  .carte-etape-fleche {
+    margin-left: 0;
+  }
+}
+
+/* ── Animations ─────────────────────────────────────────────────────────── */
+@keyframes confirmation-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confirmation-icone {
+    animation: none;
+  }
+  .carte-etape,
+  .carte-etape-fleche {
+    transition: none;
+  }
+  .carte-etape:hover {
+    transform: none;
+  }
+  .carte-etape:hover .carte-etape-fleche {
+    transform: none;
+  }
+}

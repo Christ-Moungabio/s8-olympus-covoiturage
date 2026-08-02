@@ -1,0 +1,397 @@
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 32px 24px 64px;
+}
+
+.retour-accueil {
+  display: inline-block;
+  margin-bottom: 20px;
+
+  color: var(--color-text-muted);
+
+  font-size: 14px;
+}
+
+.retour-accueil:hover {
+  color: var(--color-primary);
+}
+
+/* Barre de filtres */
+.barre-filtres {
+  display: flex;
+
+  flex-wrap: wrap;
+  gap: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.barre-filtres select,
+.barre-filtres input {
+  height: 46px;
+  padding: 0 14px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 15px;
+}
+
+.barre-filtres select {
+  flex: 1 1 180px;
+}
+
+.barre-filtres input {
+  flex: 2 1 260px;
+}
+
+.barre-filtres button {
+  flex: 0 0 auto;
+  padding: 0 22px;
+  height: 46px;
+
+  border-radius: 10px;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.barre-filtres button:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Layout général  */
+.layout-recherche {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/*  Sidebar filtres  */
+.sidebar-filtres {
+  flex: 0 0 280px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar-filtres h2 {
+  margin: 0 0 16px;
+  font-size: 17px;
+}
+
+.filtre-groupe {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.filtre-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.prix-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2px;
+  background: var(--color-bg);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+
+.prix-sous-label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.prix-valeur {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.slider-prix {
+  width: 100%;
+  accent-color: var(--color-primary);
+}
+
+.slider-bornes {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 13px;
+}
+
+.pill-active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-surface-alt);
+}
+
+.filtre-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.toggle-souslabel {
+  display: block;
+
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.toggle {
+  width: 40px;
+  height: 22px;
+  accent-color: var(--color-primary);
+}
+
+.mini-carte {
+  margin-top: 20px;
+  background: var(--color-surface-alt);
+  border-radius: 12px;
+
+  padding: 14px;
+  text-align: center;
+}
+
+.mini-carte-tag {
+  display: inline-block;
+  background: var(--color-surface);
+  border-radius: 999px;
+
+  padding: 4px 10px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+/* Zone de résultats  */
+.contenu-resultats {
+  flex: 1;
+  min-width: 0;
+}
+
+.resultats-entete {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.nb-resultats {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.tri-boutons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tri-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+
+  font-size: 13px;
+}
+
+.tri-btn-active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-surface-alt);
+}
+
+/* Liste des trajets  */
+#liste-trajets {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 860px) {
+  #liste-trajets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  #liste-trajets {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.carte-trajet {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  padding: 26px;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.carte-trajet h3 {
+  margin: 0 0 6px;
+  font-size: 22px;
+}
+
+.carte-trajet-en-tete {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.carte-trajet-prix-zone {
+  text-align: right;
+  min-width: 130px;
+}
+
+.carte-trajet-prix-zone .prix {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.carte-trajet .heure,
+.carte-trajet .conducteur {
+  margin: 0;
+}
+
+.carte-trajet .heure {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.carte-trajet .conducteur {
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.carte-trajet .badge {
+  align-self: flex-end;
+  margin-top: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.badge-dispo {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge-limite {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-complet {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.aucun-resultat {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 24px 20px;
+  border: 1px dashed var(--color-border);
+  border-radius: 20px;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+.tri-btn:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+/* Bouton  */
+.btn-voir {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  margin-top: 8px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.btn-voir:hover {
+  background: var(--color-primary-dark);
+}
+
+/*  Responsive : mobile  */
+@media (max-width: 640px) {
+  .barre-filtres select,
+  .barre-filtres input,
+  .barre-filtres button {
+    flex: 1 1 100%;
+  }
+
+  .layout-recherche {
+    flex-direction: column;
+  }
+
+  .sidebar-filtres {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
