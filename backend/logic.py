@@ -60,8 +60,11 @@ def filtrer_trajets_disponibles(trajets):
     """
     # On construit une nouvelle liste, vide au départ.
     # TODO : à compléter
-    pass
-
+    trajets_valides = [
+    t for t in trajets 
+    if t.get("places_dispo", 0) >= 1
+    ] 
+    return trajets_valides 
 
 def filtrer_par_quartier_depart(trajets, quartier):
     """
@@ -86,7 +89,12 @@ def filtrer_par_quartier_depart(trajets, quartier):
         -> [{"id": 1, "quartier_depart": "Bacongo"}, {"id": 3, "quartier_depart": "Bacongo"}]
     """
     # TODO : à compléter
-    pass
+    trajets_filtres_quqrtier_depart = []
+    for trajet in trajets :
+        nom_quartier = trajet.get('quartier_depart'," ")
+        if (trajet.get("quartier_depart") or "").lower() == quartier.lower():
+            trajets_filtres_quqrtier_depart.append(trajet)
+    return trajets_filtres_quqrtier_depart
 
 
 def filtrer_par_trajet_complet(trajets, depart, arrivee):
@@ -113,7 +121,15 @@ def filtrer_par_trajet_complet(trajets, depart, arrivee):
         -> [{"id": 1, "quartier_depart": "Bacongo", "quartier_arrivee": "Poto-Poto"}]
     """
     # TODO : à compléter
-    pass
+    trajets_complets = []
+    depart_recherche = depart.lower()
+    arrivee_recherche = arrivee.lower()
+    for trajet in trajets :
+        depart_trajet = trajet.get('quartier_depart', " ").lower()
+        arrivee_trajet = trajet.get('quartier_arrivee'," ").lower()
+        if ((depart_recherche == depart_trajet) and (arrivee_recherche == arrivee_trajet)):
+            trajets_complets.append(trajet)
+    return trajets_complets
 
 
 def trier_par_heure(trajets):
@@ -141,7 +157,10 @@ def trier_par_heure(trajets):
         comparaison de chaînes), pas besoin de les convertir en nombres.
     """
     # TODO : à compléter
-    pass
+    listes_trier_par_heure = []
+    valeur_de_critere = lambda trajets : trajets.get('heure',"")
+    listes_trier_par_heure = sorted(trajets, key=valeur_de_critere)
+    return listes_trier_par_heure
 
 
 def trier_par_prix_croissant(trajets):
@@ -160,7 +179,10 @@ def trier_par_prix_croissant(trajets):
         sortie -> [{"prix_place": 400}, {"prix_place": 500}, {"prix_place": 700}]
     """
     # TODO : à compléter
-    pass
+    listes_trier_par_prix_croissant = []
+    valeur_de_critere = lambda trajets:trajets.get('prix_place',0)
+    listes_trier_par_prix_croissant = sorted(trajets,key=valeur_de_critere)
+    return listes_trier_par_prix_croissant
 
 
 # ========================================================================
@@ -194,7 +216,13 @@ def compter_reservations_par_trajet(trajet_id, reservations):
         la réservation du trajet 2 ne compte pas, ce n'est pas le bon trajet)
     """
     # TODO : à compléter
-    pass
+    compteur = 0
+    for res in reservations :
+        valeur_id_trajet = res.get('trajet_id')
+        valeur_statut = res.get('statut')
+        if (valeur_id_trajet == trajet_id) and (valeur_statut != 'annule') :
+            compteur += 1
+    return compteur
 
 
 def verifier_place_disponible(trajet_id, trajets, reservations):
@@ -240,7 +268,32 @@ def verifier_place_disponible(trajet_id, trajets, reservations):
         il en reste 1)
     """
     # TODO : à compléter
-    pass
+    trajet_trouve = None
+    for trajet in trajets :
+        if trajet['id'] == trajet_id :
+            trajet_trouve = trajet
+            break
+    if trajet_trouve is None:
+        return {
+            "place_dispo": False, 
+            "places_restantes": 0, 
+            "message": "Trajet introuvable"
+        }
+    nb_reservations = compter_reservations_par_trajet(trajet_id, reservations)
+    places_restantes = trajet_trouve.get('places_dispo', 0) - nb_reservations
+
+    if places_restantes <= 0:
+        return {
+            "place_dispo": False, 
+            "places_restantes": 0, 
+            "message": "Trajet complet"
+        }
+    else:
+        return {
+            "place_dispo": True, 
+            "places_restantes": places_restantes, 
+            "message": ""
+        }
 
 
 def filtrer_reservations_par_statut(reservations, statut):
@@ -267,7 +320,11 @@ def filtrer_reservations_par_statut(reservations, statut):
         -> [{"id": 1, "statut": "effectue"}, {"id": 3, "statut": "effectue"}]
     """
     # TODO : à compléter
-    pass
+    listes_filtrer_reservations_par_statut = []
+    for res in reservations :
+        if res.get("statut") == statut :
+            listes_filtrer_reservations_par_statut.append(res)
+    return listes_filtrer_reservations_par_statut
 
 
 def historique_reservations_passager(passager_tel, reservations):
@@ -294,7 +351,11 @@ def historique_reservations_passager(passager_tel, reservations):
         -> [{"id": 1, "passager_tel": "067111222"}, {"id": 3, "passager_tel": "067111222"}]
     """
     # TODO : à compléter
-    pass
+    liste_historique_reservations_passager = []
+    for res in reservations :
+        if res.get('passager_tel') == passager_tel :
+            liste_historique_reservations_passager.append(res)
+    return liste_historique_reservations_passager
 
 
 def calculer_taux_annulation(reservations):
@@ -321,7 +382,15 @@ def calculer_taux_annulation(reservations):
         (1 annulée sur 3 réservations, soit 33.33...%, arrondi à 33.3)
     """
     # TODO : à compléter
-    pass
+    total_reservations = len(reservations)
+    nb_reservation_annulee = 0
+    if  total_reservations == 0 :
+        return nb_reservation_annulee
+    for res in reservations :
+        if  res.get('statut') == "annule":
+            nb_reservation_annulee += 1
+    calcul_taux_annulation = round((nb_reservation_annulee / total_reservations)*100,1)
+    return calcul_taux_annulation
 
 
 # ========================================================================
@@ -349,7 +418,15 @@ def compter_trajets_par_quartier_depart(trajets):
         -> {"Bacongo": 2, "Moungali": 1}
     """
     # TODO : à compléter
-    pass
+    dict_compter_trajets_par_quartier_depart = {}
+    for trajet in trajets :
+        quartier = trajet.get('quartier_depart')
+        if quartier is not None :
+            if quartier in dict_compter_trajets_par_quartier_depart :
+                dict_compter_trajets_par_quartier_depart[quartier]  += 1
+            else:
+                dict_compter_trajets_par_quartier_depart[quartier] = 1
+    return dict_compter_trajets_par_quartier_depart
 
 
 def top_conducteurs_par_note(conducteurs, n=3):
@@ -378,7 +455,13 @@ def top_conducteurs_par_note(conducteurs, n=3):
         -> [{"nom": "Jean", "note": 4.9}, {"nom": "Sandra", "note": 4.7}]
     """
     # TODO : à compléter
-    pass
+    liste_top_conducteurs_par_note = []
+    if len(conducteurs) == 0 :
+        return liste_top_conducteurs_par_note
+    valeur_de_critere = lambda conducteurs : conducteurs.get('note',0)
+    liste_top_conducteurs_par_note = sorted(conducteurs,key=valeur_de_critere,reverse=True)
+    resultat = liste_top_conducteurs_par_note[:n]
+    return resultat
 
 
 def calculer_prix_moyen_par_quartier(trajets):
@@ -405,7 +488,23 @@ def calculer_prix_moyen_par_quartier(trajets):
         (moyenne de 500, 400 et 600 = 500)
     """
     # TODO : à compléter
-    pass
+    sommes_prix_par_quartier = {}
+    count_nb_par_quartier = {}
+    resultat_prix_moyen_par_quartier = {}
+    for trajet in trajets :
+        quartier = trajet.get('quartier_depart')
+        prix = trajet.get('prix_place')
+        if quartier in sommes_prix_par_quartier:
+            sommes_prix_par_quartier[quartier] = sommes_prix_par_quartier[quartier] + prix
+            count_nb_par_quartier[quartier] = count_nb_par_quartier[quartier] + 1
+        else :
+            sommes_prix_par_quartier[quartier] = prix
+            count_nb_par_quartier[quartier] = 1
+    for quartier , somme_prix_dans_somme in sommes_prix_par_quartier.items():
+        effectif_count = count_nb_par_quartier[quartier]
+        calcul_prix_moyen_par_quartier = somme_prix_dans_somme / effectif_count
+        resultat_prix_moyen_par_quartier[quartier] = int(round(calcul_prix_moyen_par_quartier))
+    return resultat_prix_moyen_par_quartier
 
 
 def identifier_trajet_le_plus_reserve(trajets, reservations):
@@ -446,7 +545,37 @@ def identifier_trajet_le_plus_reserve(trajets, reservations):
         -> {"trajet_id": 1, "trajet_libelle": "Bacongo → Poto-Poto", "nombre_reservations": 2}
     """
     # TODO : à compléter
-    pass
+    dict_identifier_trajet_le_plus_reserve = {}
+    for res in reservations :
+        statut_reserve = res.get('statut')
+        if ((statut_reserve == "effectue") or (statut_reserve == "en_attente")):
+            id_trajet = res.get("trajet_id")
+            dict_identifier_trajet_le_plus_reserve[id_trajet] = dict_identifier_trajet_le_plus_reserve.get(id_trajet,0) + 1
+        
+    if len(dict_identifier_trajet_le_plus_reserve) == 0 :
+        return None
+    meilleur_id_trajet = None
+    max_reservations = -1
+    for (id_trajet,total_reserve) in dict_identifier_trajet_le_plus_reserve.items():
+        if total_reserve > max_reservations :
+            max_reservations = total_reserve
+            meilleur_id_trajet = id_trajet
+        elif total_reserve == max_reservations and id_trajet < meilleur_id_trajet:
+            meilleur_id_trajet = id_trajet
+        break
+    trajet_trouve = next(
+    (t for t in trajets if t["id"] == meilleur_id_trajet),
+    None
+    )
+    if trajet_trouve is None :
+        return None
+
+    trajet_libelle = trajet_trouve["quartier_depart"] + " → " + trajet_trouve["quartier_arrivee"]
+    return {
+        "trajet_id": meilleur_id_trajet,
+        "trajet_libelle": trajet_libelle,
+        "nombre_reservations": max_reservations
+    }
 
 
 def calculer_indicateurs_dashboard(trajets, reservations, conducteurs):
@@ -490,7 +619,32 @@ def calculer_indicateurs_dashboard(trajets, reservations, conducteurs):
         }
     """
     # TODO : à compléter
-    pass
+    count_trajet_dispo = 0
+    for trajet in trajets :
+        valeur_test = trajet.get("places_dispo",0)
+        if valeur_test >= 1 :
+            count_trajet_dispo = count_trajet_dispo + 1
+
+    nb_conducteurs = len(conducteurs)
+    if nb_conducteurs == 0 :
+        moyenne_note_conducteurs = 0.0
+    else:
+        somme_note_conducteurs = 0.0
+        for conducteur in conducteurs :
+            somme_note_conducteurs = somme_note_conducteurs + conducteur.get('note',0)
+        moyenne_note_conducteurs = round((somme_note_conducteurs / nb_conducteurs),1)
+    conut_reseravtion_active = 0
+    for res in reservations :
+        statut_actif = res.get("statut")
+        if statut_actif == "effectue" or statut_actif == "en_attente":
+            conut_reseravtion_active = conut_reseravtion_active + 1 
+    
+    return {
+        "total_trajets_disponibles": count_trajet_dispo,
+        "total_conducteurs_actifs": nb_conducteurs,
+        "total_reservations_actives": conut_reseravtion_active,
+        "note_moyenne_conducteurs": moyenne_note_conducteurs
+    }
 
 
 # ========================================================================
@@ -516,7 +670,11 @@ def verifier_telephone_disponible(comptes, telephone):
         verifier_telephone_disponible(comptes, "055999999") -> True
     """
     # TODO : à compléter
-    pass
+    for compte in comptes :
+        valeur_test = compte.get("telephone")
+        if valeur_test == telephone :
+            return False
+    return True
 
 
 def trouver_compte_par_telephone(comptes, telephone):
@@ -540,4 +698,8 @@ def trouver_compte_par_telephone(comptes, telephone):
         trouver_compte_par_telephone(comptes, "055999999") -> None
     """
     # TODO : à compléter
-    pass
+    for compte in comptes :
+        valeur_test = compte.get('telephone')
+        if valeur_test == telephone :
+            return compte
+    return None
