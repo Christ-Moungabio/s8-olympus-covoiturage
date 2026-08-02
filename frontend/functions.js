@@ -215,7 +215,10 @@ function calculerPourcentageOccupation(placesOccupees, placesTotales) {
      * Exemple : 2 places sur 4 → 50
      * Si placesTotales est 0, retourne 0.
      */
-    // TODO
+    if (placesTotales === 0) {
+        return 0;
+    }
+    return Math.round((placesOccupees / placesTotales) * 100);
 }
 
 function getBadgeDisponibilite(placesRestantes) {
@@ -229,7 +232,13 @@ function getBadgeDisponibilite(placesRestantes) {
      * - 1 place  → {libelle: "1 place", classe: "badge-limite"}
      * - 2+ places → {libelle: "N places", classe: "badge-dispo"}  (N = placesRestantes)
      */
-    // TODO
+    if (placesRestantes === 0) {
+        return { libelle: "Complet", classe: "badge-complet" };
+    }
+    if (placesRestantes === 1) {
+        return { libelle: "1 place", classe: "badge-limite" };
+    }
+    return { libelle: `${placesRestantes} places`, classe: "badge-dispo" };
 }
 
 // ============================================================================
