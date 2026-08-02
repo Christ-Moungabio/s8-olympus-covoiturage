@@ -269,10 +269,9 @@ def filtrer_reservations_par_statut(reservations, statut):
     # TODO : à compléter
     resultat = []
     for reservation in reservations:
-        if reservation["statut"] == statut:
+        if reservation.get("statut") == statut:
             resultat.append(reservation)
     return resultat
-
 
 def historique_reservations_passager(passager_tel, reservations):
     """
