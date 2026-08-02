@@ -37,7 +37,7 @@
     <!-- TOTAL DÉPENSÉ — TODO (Dev FS5) : mettre en avant ce chiffre
          visuellement (encart ou bandeau).
          *** NE PAS MODIFIER l'id *** -->
-    <p class="total-depense">Total dépensé : <strong id="mt-total"></strong></p>
+    <p class="total-depense">Total dépensé : <strong id="mt-total">45 000 FCFA</strong></p>
 
     <!-- =====================================================================
          LISTE DES RÉSERVATIONS — TODO (Dev FS5)
@@ -49,7 +49,31 @@
 
          *** NE PAS MODIFIER l'id ***
          ===================================================================== -->
-    <section id="mt-liste"></section>
+    <section id="mt-liste">
+      <!-- APERÇU TEMPORAIRE — faux contenu pour visualiser le rendu, à retirer -->
+      <article class="carte-reservation">
+        <h3>Bacongo → Poto-Poto</h3>
+        <p>Date : 2026-08-05 à 08h30</p>
+        <p>Conducteur : Jean Mabiala</p>
+        <p>Prix : 1 500 FCFA</p>
+        <span class="statut statut-effectue">effectue</span>
+      </article>
+      <article class="carte-reservation">
+        <h3>Moungali → Talangaï</h3>
+        <p>Date : 2026-08-06 à 17h00</p>
+        <p>Conducteur : Grâce Loubota</p>
+        <p>Prix : 2 000 FCFA</p>
+        <span class="statut statut-en_attente">en_attente</span>
+      </article>
+      <article class="carte-reservation">
+        <h3>Ouenzé → Makélékélé</h3>
+        <p>Date : 2026-08-02 à 12h15</p>
+        <p>Conducteur : Serge Nkounkou</p>
+        <p>Prix : 1 800 FCFA</p>
+        <span class="statut statut-annule">annule</span>
+      </article>
+      <!-- FIN APERÇU TEMPORAIRE -->
+    </section>
   </main>
 
   <div id="erreur-globale" hidden></div>
