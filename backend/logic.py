@@ -349,7 +349,15 @@ def compter_trajets_par_quartier_depart(trajets):
         -> {"Bacongo": 2, "Moungali": 1}
     """
     # TODO : à compléter
-    pass
+    dict_compter_trajets_par_quartier_depart = {}
+    for trajet in trajets :
+        quartier = trajet.get('quartier_depart')
+        if quartier is not None :
+            if quartier in dict_compter_trajets_par_quartier_depart :
+                dict_compter_trajets_par_quartier_depart[quartier]  += 1
+            else:
+                dict_compter_trajets_par_quartier_depart[quartier] = 1
+    return dict_compter_trajets_par_quartier_depart
 
 
 def top_conducteurs_par_note(conducteurs, n=3):
