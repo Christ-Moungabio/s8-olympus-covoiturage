@@ -156,8 +156,7 @@ def trier_par_heure(trajets):
         comparaison de chaînes), pas besoin de les convertir en nombres.
     """
     # TODO : à compléter
-    pass
-
+    return sorted(trajets, key=lambda trajet: trajet["heure"])
 
 def trier_par_prix_croissant(trajets):
     """
