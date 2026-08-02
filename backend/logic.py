@@ -174,7 +174,9 @@ def trier_par_prix_croissant(trajets):
         sortie -> [{"prix_place": 400}, {"prix_place": 500}, {"prix_place": 700}]
     """
     # TODO : à compléter
-    pass
+    # sorted() crée une nouvelle liste (elle ne modifie pas trajets).et key=lambda trajet: trajet["prix_place"] indique que le tri se fait selon la valeur de "prix_place".
+    
+    return sorted(trajets, key=lambda trajet: trajet["prix_place"])
 
 
 # ========================================================================
