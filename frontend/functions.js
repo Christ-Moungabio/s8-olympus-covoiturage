@@ -26,7 +26,7 @@ function compterTrajetsAujourdhui(trajets, dateAujourdhui) {
      * @return {number} - nombre de trajets à cette date
      * Exemple : compterTrajetsAujourdhui([{date:"2026-07-27"},{date:"2026-07-28"}], "2026-07-27") → 1
      */
-    return trajets.filter(trajet => trajet.date === dateAujourdhui).length;
+    // TODO
 }
 
 function formaterQuartierPrincipal(compteParQuartier) {
@@ -36,13 +36,7 @@ function formaterQuartierPrincipal(compteParQuartier) {
      * @return {string} - ex: "Poto-Poto (8 trajets)"
      * Si l'objet est vide, retourne "Aucun trajet".
      */
-    const quartiers = Object.keys(compteParQuartier);
-    if (quartiers.length === 0) return "Aucun trajet";
-
-    const quartierPrincipal = quartiers.reduce((meilleur, quartier) =>
-        compteParQuartier[quartier] > compteParQuartier[meilleur] ? quartier : meilleur
-    );
-    return `${quartierPrincipal} (${compteParQuartier[quartierPrincipal]} trajets)`;
+    // TODO
 }
 
 // ============================================================================
@@ -57,8 +51,7 @@ function filtrerParQuartierDepart(trajets, quartier) {
      * @return {Array} - trajets filtrés
      * Si quartier est vide ou null, retourne tous les trajets.
      */
-    if (!quartier) return trajets;
-    return trajets.filter(trajet => trajet.quartier_depart === quartier);
+    // TODO
 }
 
 function rechercherParMotCle(trajets, motCle) {
@@ -70,17 +63,7 @@ function rechercherParMotCle(trajets, motCle) {
      * @return {Array} - trajets correspondants
      * Si motCle est vide, retourne tous les trajets.
      */
-    const recherche = (motCle || "").trim().toLowerCase();
-    if (!recherche) return trajets;
-
-    return trajets.filter(trajet => {
-        const depart = (trajet.quartier_depart || "").toLowerCase();
-        const arrivee = (trajet.quartier_arrivee || "").toLowerCase();
-        const commentaire = (trajet.commentaire || "").toLowerCase();
-        return depart.includes(recherche)
-            || arrivee.includes(recherche)
-            || commentaire.includes(recherche);
-    });
+    // TODO
 }
 
 // ============================================================================
@@ -94,7 +77,7 @@ function formaterPrix(prix) {
      * @return {string} - "5 000 FCFA"
      * Exemple : formaterPrix(500) → "500 FCFA", formaterPrix(1500) → "1 500 FCFA"
      */
-      return `${prix.toLocaleString("fr-FR")} FCFA`;
+   return `${prix.toLocaleString("fr-FR").replace(/\s/g, " ")} FCFA`;
 }
 
 function formaterHeure(heure) {
@@ -103,7 +86,7 @@ function formaterHeure(heure) {
      * @param {string} heure - format "HH:MM" (ex: "07:30")
      * @return {string} - "07h30"
      */
-        return heure.replace(":", "h");
+    return heure.replace(":", "h");
 }
 
 // ============================================================================
@@ -123,32 +106,7 @@ function validerFormulaireProposer(formulaire) {
      * - places_dispo entre 1 et 8
      * - prix_place > 0
      */
-    const quartierDepart = (formulaire.quartier_depart || "").trim();
-    const quartierArrivee = (formulaire.quartier_arrivee || "").trim();
-    const heure = formulaire.heure || "";
-    const placesDispo = Number(formulaire.places_dispo);
-    const prixPlace = Number(formulaire.prix_place);
-    const erreurs = [];
-
-    if (!quartierDepart || !quartierArrivee) {
-        erreurs.push("Le quartier de départ et le quartier d'arrivée sont obligatoires.");
-    } else if (quartierDepart === quartierArrivee) {
-        erreurs.push("Le quartier de départ et le quartier d'arrivée doivent être différents.");
-    }
-
-    if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(heure)) {
-        erreurs.push("L'heure est obligatoire et doit être au format HH:MM.");
-    }
-
-    if (!Number.isInteger(placesDispo) || placesDispo < 1 || placesDispo > 8) {
-        erreurs.push("Le nombre de places disponibles doit être compris entre 1 et 8.");
-    }
-
-    if (!(prixPlace > 0)) {
-        erreurs.push("Le prix par place doit être supérieur à 0.");
-    }
-
-    return { valide: erreurs.length === 0, erreurs };
+    // TODO
 }
 
 function formaterMessageConfirmation(nom, quartierDepart, quartierArrivee, heure) {
@@ -159,7 +117,7 @@ function formaterMessageConfirmation(nom, quartierDepart, quartierArrivee, heure
      *   formaterMessageConfirmation("Marie", "Bacongo", "Poto-Poto", "07:30")
      *   → "Bonjour Marie, votre réservation pour Bacongo → Poto-Poto à 07:30 a été enregistrée."
      */
-    return `Bonjour ${nom}, votre réservation pour ${quartierDepart} → ${quartierArrivee} à ${heure} a été enregistrée.`;
+    // TODO
 }
 
 // ============================================================================
@@ -234,26 +192,7 @@ function validerFormulaireInscription(formulaire) {
      * - telephone obligatoire, au moins 9 chiffres
      * - mot_de_passe obligatoire, au moins 4 caractères
      */
-    const erreurs = [];
-
-    if (!formulaire.nom || formulaire.nom.trim() === "") {
-        erreurs.push("Le nom est obligatoire");
-    }
-
-    const chiffresTelephone = (formulaire.telephone || "").replace(/\D/g, "");
-    if (!formulaire.telephone) {
-        erreurs.push("Le téléphone est obligatoire");
-    } else if (chiffresTelephone.length < 9) {
-        erreurs.push("Le téléphone doit contenir au moins 9 chiffres");
-    }
-
-    if (!formulaire.mot_de_passe) {
-        erreurs.push("Le mot de passe est obligatoire");
-    } else if (formulaire.mot_de_passe.length < 4) {
-        erreurs.push("Le mot de passe doit contenir au moins 4 caractères");
-    }
-
-    return { valide: erreurs.length === 0, erreurs };
+    // TODO
 }
 
 function validerFormulaireLogin(formulaire) {
@@ -266,17 +205,7 @@ function validerFormulaireLogin(formulaire) {
      * - telephone obligatoire
      * - mot_de_passe obligatoire
      */
-    const erreurs = [];
-
-    if (!formulaire.telephone) {
-        erreurs.push("Le téléphone est obligatoire");
-    }
-
-    if (!formulaire.mot_de_passe) {
-        erreurs.push("Le mot de passe est obligatoire");
-    }
-
-    return { valide: erreurs.length === 0, erreurs };
+    // TODO
 }
 
 // ============================================================================
