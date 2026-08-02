@@ -36,7 +36,7 @@ main {
 }
 
 .barre-recherche-tel input {
-  flex: 1;
+  margin-right: auto;
 }
 
 .barre-recherche-tel input::placeholder {
