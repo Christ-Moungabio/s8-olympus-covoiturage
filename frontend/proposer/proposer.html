@@ -1,20 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BraCovoit — Proposer un trajet</title>
-  <link rel="stylesheet" href="proposer.css">
-</head>
-<body id="page-proposer">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BraCovoit — Proposer un trajet</title>
+    <link rel="stylesheet" href="proposer.css" />
+    <link rel="stylesheet" href="../layout.css" />
+  </head>
+  <body id="page-proposer">
+    <!-- NAVIGATION — TODO (Dev FS4) -->
 
-  <!-- NAVIGATION — TODO (Dev FS4) -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a
+          href="../accueil/index.html"
+          class="brand"
+          aria-label="Covoiturage — accueil"
+        >
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 32 32"
+            fill="none"
+            aria-hidden="true"
+          >
+            <rect width="32" height="32" rx="10" fill="#2563EB"></rect>
+            <path
+              d="M11 21.5 L21 10.5"
+              stroke="#FFFFFF"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              opacity="0.9"
+            ></path>
+            <circle cx="11" cy="21.5" r="3.4" fill="#FFFFFF"></circle>
+            <circle cx="21" cy="10.5" r="3.4" fill="#F59E0B"></circle>
+          </svg>
+          <span class="brand-name">Tokende</span>
+        </a>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+        <nav class="nav" aria-label="Navigation principale">
+          <a href="../accueil/index.html" class="nav-link" data-nav-link
+            >Accueil</a
+          >
+          <a href="../recherche/recherche.html" class="nav-link" data-nav-link
+            >Recherche</a
+          >
+          <a href="../proposer/proposer.html" class="nav-link" data-nav-link
+            >Proposer un trajet</a
+          >
+          <a
+            href="../mes-trajets/mes-trajets.html"
+            class="nav-link"
+            data-nav-link
+            >Mes trajets</a
+          >
+          <a href="../dashboard/dashboard.html" class="nav-link" data-nav-link
+            >Tableau de bord</a
+          >
+        </nav>
 
-  <main>
-    <!-- =====================================================================
+        <div class="spacer"></div>
+
+        <button
+          type="button"
+          class="theme-btn"
+          data-theme-toggle
+          aria-label="Changer de thème"
+        >
+          <span aria-hidden="true">
+            <img src="../images/moon.svg" alt="" />
+          </span>
+          <span aria-hidden="true">
+            <img src="../images/sun.svg" alt="" />
+          </span>
+        </button>
+
+        <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+        <div class="header-actions" id="nav-session"></div>
+
+        <button
+          type="button"
+          class="menu-btn"
+          data-mobile-menu-open
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Ouvrir le menu"
+        >
+          <img src="../images/menu.svg" alt="" />
+        </button>
+      </div>
+    </header>
+
+    <div class="mobile-nav" id="mobile-menu" data-mobile-menu hidden>
+      <div
+        class="mobile-nav-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+      >
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button
+            type="button"
+            class="mobile-nav-close"
+            data-mobile-menu-close
+            aria-label="Fermer le menu"
+          >
+            <img src="../images/x.svg" aria-hidden="true" alt="" />
+          </button>
+        </div>
+
+        <div class="mobile-nav-inner">
+          <a href="../accueil/index.html" class="mobile-nav-link" data-nav-link
+            >Accueil</a
+          >
+          <a
+            href="../recherche/recherche.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Recherche</a
+          >
+          <a
+            href="../proposer/proposer.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Proposer un trajet</a
+          >
+          <a
+            href="../mes-trajets/mes-trajets.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Mes trajets</a
+          >
+          <a
+            href="../dashboard/dashboard.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Tableau de bord</a
+          >
+        </div>
+
+        <!-- Contenu dupliqué depuis #nav-session par layout.js -->
+        <div class="mobile-header-actions" id="nav-session-mobile"></div>
+
+        <p class="mobile-nav-credit">Tokende · covoiturage</p>
+      </div>
+    </div>
+
+    <main>
+      <div class="page-header">
+        <span class="page-icon" aria-hidden="true">
+          <svg
+            class="page-icon-glyph"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+            />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </span>
+        <div>
+          <h1>Proposer un trajet</h1>
+          <p class="page-subtitle">
+            Indiquez votre trajet et vos disponibilités : les passagers pourront
+            le réserver en quelques clics.
+          </p>
+        </div>
+      </div>
+
+      <!-- =====================================================================
          FORMULAIRE — TODO (Dev FS4)
          Mettre en forme le formulaire de proposition de trajet : les deux
          sélecteurs de quartier (départ/arrivée) sont remplis dynamiquement
@@ -24,37 +185,306 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <form id="form-proposer">
-      <label for="p-depart">Quartier de départ</label>
-      <select id="p-depart"></select>
+      <form id="form-proposer" class="form-card">
+        <div class="route-group">
+          <div class="field">
+            <label for="p-depart">Quartier de départ</label>
+            <div class="select-wrap select-wrap--pin">
+              <svg
+                class="select-icon-pin"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <select id="p-depart"></select>
+              <svg
+                class="select-icon-chevron"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </div>
+          </div>
 
-      <label for="p-arrivee">Quartier d'arrivée</label>
-      <select id="p-arrivee"></select>
+          <div class="route-divider" aria-hidden="true">
+            <svg
+              class="route-divider-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </div>
 
-      <label for="p-heure">Heure (HH:MM)</label>
-      <input type="text" id="p-heure" placeholder="07:30">
+          <div class="field">
+            <label for="p-arrivee">Quartier d'arrivée</label>
+            <div class="select-wrap select-wrap--pin">
+              <svg
+                class="select-icon-pin"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <select id="p-arrivee"></select>
+              <svg
+                class="select-icon-chevron"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </div>
 
-      <label for="p-places">Places disponibles</label>
-      <input type="number" id="p-places" min="1" max="8">
+        <div class="field">
+          <label for="p-heure">Heure de départ</label>
+          <input type="time" id="p-heure" />
+          <small class="field-hint">Sélectionnez l'heure de départ</small>
+        </div>
 
-      <label for="p-prix">Prix par place (FCFA)</label>
-      <input type="number" id="p-prix" min="1">
+        <div class="field-row">
+          <div class="field">
+            <label for="p-places">Places disponibles</label>
+            <input type="number" id="p-places" min="1" max="8" />
+            <small class="field-hint">Entre 1 et 8 places</small>
+          </div>
 
-      <button type="submit">Publier mon trajet</button>
-    </form>
+          <div class="field">
+            <label for="p-prix">Prix par place (FCFA)</label>
+            <input type="number" id="p-prix" min="1" />
+            <small class="field-hint">Montant libre</small>
+          </div>
+        </div>
 
-    <!-- Zone d'erreurs de validation — TODO (Dev FS4) : mettre en forme la
+        <button type="submit" class="btn btn-primary btn-block">
+          <span>Publier mon trajet</span>
+          <svg
+            class="btn-icon"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </button>
+      </form>
+
+      <!-- Zone d'erreurs de validation — TODO (Dev FS4) : mettre en forme la
          liste <ul><li> injectée par main.js en cas de formulaire invalide.
          NE PAS MODIFIER l'id. -->
-    <div id="erreurs-form" hidden></div>
+      <div id="erreurs-form" hidden></div>
 
-    <!-- BLOC D'AIDE — TODO (Dev FS4) : encart explicatif optionnel
+      <!-- BLOC D'AIDE — TODO (Dev FS4) : encart explicatif optionnel
          (ex. rappel que le prix est libre, conseils de sécurité) -->
-  </main>
+      <div class="help-card">
+        <h2 class="help-card-title">
+          <svg
+            class="help-card-icon"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+          Bon à savoir
+        </h2>
+        <ul class="help-card-list">
+          <li>
+            <svg
+              class="help-card-check"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            <span
+              >Le prix par place est libre : ajustez-le selon vos frais
+              d'essence, sans obligation de faire du profit.</span
+            >
+          </li>
+          <li>
+            <svg
+              class="help-card-check"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            <span
+              >Vérifiez l'identité de vos passagers et privilégiez un point de
+              rendez-vous public et fréquenté.</span
+            >
+          </li>
+          <li>
+            <svg
+              class="help-card-check"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            <span
+              >Ne partagez vos informations personnelles qu'après confirmation
+              de la réservation.</span
+            >
+          </li>
+        </ul>
+      </div>
+    </main>
 
-  <div id="erreur-globale" hidden></div>
+    <div id="erreur-globale" hidden></div>
 
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+    <!-- FOOTER — TODO (Dev FS1) : liens utiles, mentions -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a
+              href="index.html"
+              class="brand"
+              aria-label="Covoiturage — accueil"
+            >
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 32 32"
+                fill="none"
+                aria-hidden="true"
+              >
+                <rect width="32" height="32" rx="10" fill="#2563EB"></rect>
+                <path
+                  d="M11 21.5 L21 10.5"
+                  stroke="#FFFFFF"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  opacity="0.9"
+                ></path>
+                <circle cx="11" cy="21.5" r="3.4" fill="#FFFFFF"></circle>
+                <circle cx="21" cy="10.5" r="3.4" fill="#F59E0B"></circle>
+              </svg>
+              <span class="brand-name">Tokende</span>
+            </a>
+            <p class="footer-desc">
+              « Tokende » veut dire <em>on y va</em> en lingala. Le covoiturage
+              de quartier à quartier, pensé pour Brazzaville et la République du
+              Congo.
+            </p>
+          </div>
+
+          <div class="footer-columns">
+            <div class="footer-col">
+              <h3 class="footer-heading">Plateforme</h3>
+              <ul>
+                <li>
+                  <a href="../recherche/recherche.html">Rechercher un trajet</a>
+                </li>
+                <li>
+                  <a href="../proposer/proposer.html">Proposer un trajet</a>
+                </li>
+                <li>
+                  <a href="../mes-trajets/mes-trajets.html">Mes Trajets</a>
+                </li>
+                <li>
+                  <a href="../dashboard/dashboard.html">Tableau de board</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-heading">Quartiers</h3>
+              <ul>
+                <li>Poto-Poto · Ouenzé</li>
+                <li>Bacongo · Makélékélé</li>
+                <li>Talangaï · Djiri</li>
+                <li>Moungali · Centre-ville</li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-heading">Assistance</h3>
+              <ul>
+                <li><a href="#">Centre d'aide</a></li>
+                <li><a href="#">Sécurité et assurance</a></li>
+                <li><a href="tel:+242060000000">+242 06 000 00 00</a></li>
+                <li>
+                  <a href="mailto:bonjour@tokende.cg">bonjour@tokende.cg</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Tokende — Brazzaville, République du Congo</p>
+          <p class="footer-legal">
+            <a href="#">Conditions générales</a> ·
+            <a href="#">Confidentialité</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../layout.js"></script>
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>

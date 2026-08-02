@@ -179,6 +179,7 @@ main {
   line-height: 1.6;
 }
 
+
 .carte-reservation p:last-of-type {
   color: var(--color-text);
   font-weight: 700;

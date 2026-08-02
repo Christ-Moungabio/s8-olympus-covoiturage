@@ -1,0 +1,120 @@
+/* ── Page de connexion ──────────────────────────────────────────────────── */
+.retour-accueil {
+  display: inline-block;
+  margin: 20px 24px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+.retour-accueil:hover {
+  color: var(--color-primary);
+}
+
+.auth-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 64px 20px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0 0 8px;
+}
+.auth-subtitle {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0 0 28px;
+}
+
+/* ── Formulaire ─────────────────────────────────────────────────────────── */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.form-field input {
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+  outline: 0;
+}
+
+.form-field input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+.form-field input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.3;
+}
+
+.auth-form .btn {
+  margin-top: 6px;
+}
+
+/* ── Erreurs de validation (liste injectée par main.js) ─────────────────── */
+.form-errors {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid var(--color-danger);
+}
+
+:root[data-theme="dark"] .form-errors {
+  background: rgba(248, 113, 113, 0.12);
+}
+.form-errors ul {
+  margin: 0;
+  padding: 0 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.form-errors li {
+  font-size: 13.5px;
+  color: var(--color-danger);
+}
+
+/* ── Lien vers l'inscription ────────────────────────────────────────────── */
+.auth-switch {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+.auth-switch a {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.auth-switch a:hover {
+  color: var(--color-primary-dark);
+}
