@@ -644,7 +644,11 @@ def verifier_telephone_disponible(comptes, telephone):
         verifier_telephone_disponible(comptes, "055999999") -> True
     """
     # TODO : à compléter
-    pass
+     for compte in comptes :
+        valeur_test = compte.get("telephone")
+        if valeur_test == telephone :
+            return False
+    return True
 
 
 def trouver_compte_par_telephone(comptes, telephone):
