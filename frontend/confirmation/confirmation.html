@@ -1,43 +1,353 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BraCovoit — Confirmation</title>
-  <link rel="stylesheet" href="confirmation.css">
-</head>
-<body id="page-confirmation">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BraCovoit — Confirmation</title>
+    <link rel="stylesheet" href="confirmation.css" />
+    <link rel="stylesheet" href="../layout.css" />
+  </head>
+  <body id="page-confirmation">
+    <!-- NAVIGATION — TODO (Dev FS6) -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a
+          href="../accueil/index.html"
+          class="brand"
+          aria-label="Covoiturage — accueil"
+        >
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 32 32"
+            fill="none"
+            aria-hidden="true"
+          >
+            <rect width="32" height="32" rx="10" fill="#2563EB"></rect>
+            <path
+              d="M11 21.5 L21 10.5"
+              stroke="#FFFFFF"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              opacity="0.9"
+            ></path>
+            <circle cx="11" cy="21.5" r="3.4" fill="#FFFFFF"></circle>
+            <circle cx="21" cy="10.5" r="3.4" fill="#F59E0B"></circle>
+          </svg>
+          <span class="brand-name">Tokende</span>
+        </a>
 
-  <!-- NAVIGATION — TODO (Dev FS6) -->
+        <nav class="nav" aria-label="Navigation principale">
+          <a href="../accueil/index.html" class="nav-link" data-nav-link
+            >Accueil</a
+          >
+          <a href="../recherche/recherche.html" class="nav-link" data-nav-link
+            >Recherche</a
+          >
+          <a href="../proposer/proposer.html" class="nav-link" data-nav-link
+            >Proposer un trajet</a
+          >
+          <a
+            href="../mes-trajets/mes-trajets.html"
+            class="nav-link"
+            data-nav-link
+            >Mes trajets</a
+          >
+          <a href="../dashboard/dashboard.html" class="nav-link" data-nav-link
+            >Tableau de bord</a
+          >
+        </nav>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+        <div class="spacer"></div>
 
-  <main>
-    <!-- =====================================================================
-         MESSAGE DE CONFIRMATION — TODO (Dev FS6)
-         Cadre visuel de succès (icône, couleur positive). Le message exact
-         est injecté par main.js à partir du paramètre d'URL.
+        <button
+          type="button"
+          class="theme-btn"
+          data-theme-toggle
+          aria-label="Changer de thème"
+        >
+          <span aria-hidden="true">
+            <img src="../images/moon.svg" alt="" />
+          </span>
+          <span aria-hidden="true">
+            <img src="../images/sun.svg" alt="" />
+          </span>
+        </button>
 
-         *** NE PAS MODIFIER l'id — main.js injecte le message ***
-         ===================================================================== -->
-    <section class="bloc-confirmation">
-      <h1>Merci !</h1>
-      <p id="confirmation-message"></p>
-    </section>
+        <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+        <div class="header-actions" id="nav-session"></div>
 
-    <!-- PROCHAINES ÉTAPES — TODO (Dev FS6) : mettre en forme ces 3 liens
-         (boutons ou cartes de navigation).
-         NE PAS MODIFIER les href/id des liens. -->
-    <section class="prochaines-etapes">
-      <h2>Prochaines étapes</h2>
-      <a href="../accueil/index.html">Retour à l'accueil</a>
-      <a id="lien-mes-trajets" href="../mes-trajets/mes-trajets.html">Voir mes trajets</a>
-      <a href="../recherche/recherche.html">Rechercher d'autres trajets</a>
-    </section>
-  </main>
+        <button
+          type="button"
+          class="menu-btn"
+          data-mobile-menu-open
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Ouvrir le menu"
+        >
+          <img src="../images/menu.svg" alt="" />
+        </button>
+      </div>
+    </header>
 
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+    <div class="mobile-nav" id="mobile-menu" data-mobile-menu hidden>
+      <div
+        class="mobile-nav-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+      >
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button
+            type="button"
+            class="mobile-nav-close"
+            data-mobile-menu-close
+            aria-label="Fermer le menu"
+          >
+            <img src="../images/x.svg" aria-hidden="true" alt="" />
+          </button>
+        </div>
+
+        <div class="mobile-nav-inner">
+          <a href="../accueil/index.html" class="mobile-nav-link" data-nav-link
+            >Accueil</a
+          >
+          <a
+            href="../recherche/recherche.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Recherche</a
+          >
+          <a
+            href="../proposer/proposer.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Proposer un trajet</a
+          >
+          <a
+            href="../mes-trajets/mes-trajets.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Mes trajets</a
+          >
+          <a
+            href="../dashboard/dashboard.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Tableau de bord</a
+          >
+        </div>
+
+        <!-- Contenu dupliqué depuis #nav-session par layout.js -->
+        <div class="mobile-header-actions" id="nav-session-mobile"></div>
+
+        <p class="mobile-nav-credit">Covoiturage · votre ville</p>
+      </div>
+    </div>
+
+    <main class="confirmation-main">
+      <!-- =====================================================================
+           MESSAGE DE CONFIRMATION — TODO (Dev FS6)
+           Cadre visuel de succès (icône, couleur positive). Le message exact
+           est injecté par main.js à partir du paramètre d'URL.
+
+           *** NE PAS MODIFIER l'id — main.js injecte le message ***
+           ===================================================================== -->
+      <section class="bloc-confirmation">
+        <span class="confirmation-icone" aria-hidden="true">
+          <img src="../images/check.svg" alt="" />
+        </span>
+        <h1>Merci !</h1>
+        <p id="confirmation-message"></p>
+      </section>
+
+      <!-- PROCHAINES ÉTAPES — TODO (Dev FS6) : mettre en forme ces 3 liens
+           (boutons ou cartes de navigation).
+           NE PAS MODIFIER les href/id des liens. -->
+      <section class="prochaines-etapes">
+        <h2>Prochaines étapes</h2>
+
+        <div class="etapes-grille">
+          <a href="../accueil/index.html" class="carte-etape">
+            <span class="carte-etape-icone" aria-hidden="true">
+              <img src="../images/house.svg" alt="" />
+            </span>
+            <span class="carte-etape-texte">
+              <span class="carte-etape-titre">Retour à l'accueil</span>
+              <span class="carte-etape-sous">Revenir à la page principale</span>
+            </span>
+            <svg
+              class="carte-etape-fleche"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+
+          <a
+            id="lien-mes-trajets"
+            href="../mes-trajets/mes-trajets.html"
+            class="carte-etape carte-etape-primaire"
+          >
+            <span class="carte-etape-icone" aria-hidden="true">
+              <img src="../images/ticket.svg" alt="" />
+            </span>
+            <span class="carte-etape-texte">
+              <span class="carte-etape-titre">Voir mes trajets</span>
+              <span class="carte-etape-sous"
+                >Retrouver vos réservations et vos trajets</span
+              >
+            </span>
+            <svg
+              class="carte-etape-fleche"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+
+          <a href="../recherche/recherche.html" class="carte-etape">
+            <span class="carte-etape-icone" aria-hidden="true">
+              <img src="../images/search.svg" alt="" />
+            </span>
+            <span class="carte-etape-texte">
+              <span class="carte-etape-titre">Rechercher d'autres trajets</span>
+              <span class="carte-etape-sous"
+                >Explorer les trajets de quartier à quartier</span
+              >
+            </span>
+            <svg
+              class="carte-etape-fleche"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a
+              href="../accueil/index.html"
+              class="brand"
+              aria-label="Covoiturage — accueil"
+            >
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 32 32"
+                fill="none"
+                aria-hidden="true"
+              >
+                <rect width="32" height="32" rx="10" fill="#2563EB"></rect>
+                <path
+                  d="M11 21.5 L21 10.5"
+                  stroke="#FFFFFF"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  opacity="0.9"
+                ></path>
+                <circle cx="11" cy="21.5" r="3.4" fill="#FFFFFF"></circle>
+                <circle cx="21" cy="10.5" r="3.4" fill="#F59E0B"></circle>
+              </svg>
+              <span class="brand-name">Tokende</span>
+            </a>
+            <p class="footer-desc">
+              « Tokende » veut dire <em>on y va</em> en lingala. Le covoiturage
+              de quartier à quartier, pensé pour Brazzaville et la République du
+              Congo.
+            </p>
+          </div>
+
+          <div class="footer-columns">
+            <div class="footer-col">
+              <h3 class="footer-heading">Plateforme</h3>
+              <ul>
+                <li>
+                  <a href="../recherche/recherche.html">Rechercher un trajet</a>
+                </li>
+                <li>
+                  <a href="../proposer/proposer.html">Proposer un trajet</a>
+                </li>
+                <li>
+                  <a href="../mes-trajets/mes-trajets.html">Mes Trajets</a>
+                </li>
+                <li>
+                  <a href="../dashboard/dashboard.html">Tableau de board</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-heading">Quartiers</h3>
+              <ul>
+                <li>Poto-Poto · Ouenzé</li>
+                <li>Bacongo · Makélékélé</li>
+                <li>Talangaï · Djiri</li>
+                <li>Moungali · Centre-ville</li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-heading">Assistance</h3>
+              <ul>
+                <li><a href="#">Centre d'aide</a></li>
+                <li><a href="#">Sécurité et assurance</a></li>
+                <li><a href="tel:+242060000000">+242 06 000 00 00</a></li>
+                <li>
+                  <a href="mailto:bonjour@tokende.cg">bonjour@tokende.cg</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Tokende — Brazzaville, République du Congo</p>
+          <p class="footer-legal">
+            <a href="#">Conditions générales</a> ·
+            <a href="#">Confidentialité</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="erreur-globale" hidden></div>
+
+    <!-- NE PAS MODIFIER — scripts de connexion au backend -->
+    <script src="../layout.js"></script>
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>
