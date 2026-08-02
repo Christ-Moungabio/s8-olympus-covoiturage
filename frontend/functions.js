@@ -112,7 +112,32 @@ function validerFormulaireProposer(formulaire) {
      * - places_dispo entre 1 et 8
      * - prix_place > 0
      */
-    // TODO
+    const quartierDepart = (formulaire.quartier_depart || "").trim();
+    const quartierArrivee = (formulaire.quartier_arrivee || "").trim();
+    const heure = formulaire.heure || "";
+    const placesDispo = Number(formulaire.places_dispo);
+    const prixPlace = Number(formulaire.prix_place);
+    const erreurs = [];
+
+    if (!quartierDepart || !quartierArrivee) {
+        erreurs.push("Le quartier de départ et le quartier d'arrivée sont obligatoires.");
+    } else if (quartierDepart === quartierArrivee) {
+        erreurs.push("Le quartier de départ et le quartier d'arrivée doivent être différents.");
+    }
+
+    if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(heure)) {
+        erreurs.push("L'heure est obligatoire et doit être au format HH:MM.");
+    }
+
+    if (!Number.isInteger(placesDispo) || placesDispo < 1 || placesDispo > 8) {
+        erreurs.push("Le nombre de places disponibles doit être compris entre 1 et 8.");
+    }
+
+    if (!(prixPlace > 0)) {
+        erreurs.push("Le prix par place doit être supérieur à 0.");
+    }
+
+    return { valide: erreurs.length === 0, erreurs };
 }
 
 function formaterMessageConfirmation(nom, quartierDepart, quartierArrivee, heure) {
@@ -123,7 +148,7 @@ function formaterMessageConfirmation(nom, quartierDepart, quartierArrivee, heure
      *   formaterMessageConfirmation("Marie", "Bacongo", "Poto-Poto", "07:30")
      *   → "Bonjour Marie, votre réservation pour Bacongo → Poto-Poto à 07:30 a été enregistrée."
      */
-    // TODO
+    return `Bonjour ${nom}, votre réservation pour ${quartierDepart} → ${quartierArrivee} à ${heure} a été enregistrée.`;
 }
 
 // ============================================================================

@@ -7,7 +7,9 @@ node_modules/
 .env
 /_solution_CP
 /CLAUDE.md
-
-
-.venv
-
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
