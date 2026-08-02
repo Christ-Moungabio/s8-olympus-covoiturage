@@ -26,7 +26,7 @@ function compterTrajetsAujourdhui(trajets, dateAujourdhui) {
      * @return {number} - nombre de trajets à cette date
      * Exemple : compterTrajetsAujourdhui([{date:"2026-07-27"},{date:"2026-07-28"}], "2026-07-27") → 1
      */
-    // TODO
+    return trajets.filter(trajet => trajet.date === dateAujourdhui).length;
 }
 
 function formaterQuartierPrincipal(compteParQuartier) {
@@ -36,7 +36,13 @@ function formaterQuartierPrincipal(compteParQuartier) {
      * @return {string} - ex: "Poto-Poto (8 trajets)"
      * Si l'objet est vide, retourne "Aucun trajet".
      */
-    // TODO
+    const quartiers = Object.keys(compteParQuartier);
+    if (quartiers.length === 0) return "Aucun trajet";
+
+    const quartierPrincipal = quartiers.reduce((meilleur, quartier) =>
+        compteParQuartier[quartier] > compteParQuartier[meilleur] ? quartier : meilleur
+    );
+    return `${quartierPrincipal} (${compteParQuartier[quartierPrincipal]} trajets)`;
 }
 
 // ============================================================================
@@ -51,7 +57,8 @@ function filtrerParQuartierDepart(trajets, quartier) {
      * @return {Array} - trajets filtrés
      * Si quartier est vide ou null, retourne tous les trajets.
      */
-    // TODO
+    if (!quartier) return trajets;
+    return trajets.filter(trajet => trajet.quartier_depart === quartier);
 }
 
 function rechercherParMotCle(trajets, motCle) {
@@ -63,7 +70,17 @@ function rechercherParMotCle(trajets, motCle) {
      * @return {Array} - trajets correspondants
      * Si motCle est vide, retourne tous les trajets.
      */
-    // TODO
+    const recherche = (motCle || "").trim().toLowerCase();
+    if (!recherche) return trajets;
+
+    return trajets.filter(trajet => {
+        const depart = (trajet.quartier_depart || "").toLowerCase();
+        const arrivee = (trajet.quartier_arrivee || "").toLowerCase();
+        const commentaire = (trajet.commentaire || "").toLowerCase();
+        return depart.includes(recherche)
+            || arrivee.includes(recherche)
+            || commentaire.includes(recherche);
+    });
 }
 
 // ============================================================================
@@ -157,6 +174,11 @@ function filtrerReservationsParStatut(reservations, statut) {
      * @return {Array} - réservations correspondantes
      */
     // TODO
+    if(!statut){
+        return reservations;
+    }
+
+    return reservations.filter(reservation => reservation.statut ===statut)
 }
 
 function calculerTotalDepenseParPassager(reservations) {
@@ -170,6 +192,14 @@ function calculerTotalDepenseParPassager(reservations) {
      *   → 1200
      */
     // TODO
+    let total = 0;
+
+    for(let reservation of reservations){
+        if(reservation.statut !== "annule"){
+            total += reservation.trajet.prix_place;
+        }
+    }
+    return total;
 }
 
 // ============================================================================
@@ -217,7 +247,26 @@ function validerFormulaireInscription(formulaire) {
      * - telephone obligatoire, au moins 9 chiffres
      * - mot_de_passe obligatoire, au moins 4 caractères
      */
-    // TODO
+    const erreurs = [];
+
+    if (!formulaire.nom || formulaire.nom.trim() === "") {
+        erreurs.push("Le nom est obligatoire");
+    }
+
+    const chiffresTelephone = (formulaire.telephone || "").replace(/\D/g, "");
+    if (!formulaire.telephone) {
+        erreurs.push("Le téléphone est obligatoire");
+    } else if (chiffresTelephone.length < 9) {
+        erreurs.push("Le téléphone doit contenir au moins 9 chiffres");
+    }
+
+    if (!formulaire.mot_de_passe) {
+        erreurs.push("Le mot de passe est obligatoire");
+    } else if (formulaire.mot_de_passe.length < 4) {
+        erreurs.push("Le mot de passe doit contenir au moins 4 caractères");
+    }
+
+    return { valide: erreurs.length === 0, erreurs };
 }
 
 function validerFormulaireLogin(formulaire) {
@@ -230,7 +279,17 @@ function validerFormulaireLogin(formulaire) {
      * - telephone obligatoire
      * - mot_de_passe obligatoire
      */
-    // TODO
+    const erreurs = [];
+
+    if (!formulaire.telephone) {
+        erreurs.push("Le téléphone est obligatoire");
+    }
+
+    if (!formulaire.mot_de_passe) {
+        erreurs.push("Le mot de passe est obligatoire");
+    }
+
+    return { valide: erreurs.length === 0, erreurs };
 }
 
 // ============================================================================
