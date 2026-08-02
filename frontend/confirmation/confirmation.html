@@ -143,43 +143,125 @@
         <!-- Contenu dupliqué depuis #nav-session par layout.js -->
         <div class="mobile-header-actions" id="nav-session-mobile"></div>
 
-        <p class="mobile-nav-credit">Tokende · covoiturage</p>
+        <p class="mobile-nav-credit">Covoiturage · votre ville</p>
       </div>
     </div>
 
-    <main>
+    <main class="confirmation-main">
       <!-- =====================================================================
-         MESSAGE DE CONFIRMATION — TODO (Dev FS6)
-         Cadre visuel de succès (icône, couleur positive). Le message exact
-         est injecté par main.js à partir du paramètre d'URL.
+           MESSAGE DE CONFIRMATION — TODO (Dev FS6)
+           Cadre visuel de succès (icône, couleur positive). Le message exact
+           est injecté par main.js à partir du paramètre d'URL.
 
-         *** NE PAS MODIFIER l'id — main.js injecte le message ***
-         ===================================================================== -->
+           *** NE PAS MODIFIER l'id — main.js injecte le message ***
+           ===================================================================== -->
       <section class="bloc-confirmation">
+        <span class="confirmation-icone" aria-hidden="true">
+          <img src="../images/check.svg" alt="" />
+        </span>
         <h1>Merci !</h1>
         <p id="confirmation-message"></p>
       </section>
 
       <!-- PROCHAINES ÉTAPES — TODO (Dev FS6) : mettre en forme ces 3 liens
-         (boutons ou cartes de navigation).
-         NE PAS MODIFIER les href/id des liens. -->
+           (boutons ou cartes de navigation).
+           NE PAS MODIFIER les href/id des liens. -->
       <section class="prochaines-etapes">
         <h2>Prochaines étapes</h2>
-        <a href="../accueil/index.html">Retour à l'accueil</a>
-        <a id="lien-mes-trajets" href="../mes-trajets/mes-trajets.html"
-          >Voir mes trajets</a
-        >
-        <a href="../recherche/recherche.html">Rechercher d'autres trajets</a>
+
+        <div class="etapes-grille">
+          <a href="../accueil/index.html" class="carte-etape">
+            <span class="carte-etape-icone" aria-hidden="true">
+              <img src="../images/house.svg" alt="" />
+            </span>
+            <span class="carte-etape-texte">
+              <span class="carte-etape-titre">Retour à l'accueil</span>
+              <span class="carte-etape-sous">Revenir à la page principale</span>
+            </span>
+            <svg
+              class="carte-etape-fleche"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+
+          <a
+            id="lien-mes-trajets"
+            href="../mes-trajets/mes-trajets.html"
+            class="carte-etape carte-etape-primaire"
+          >
+            <span class="carte-etape-icone" aria-hidden="true">
+              <img src="../images/ticket.svg" alt="" />
+            </span>
+            <span class="carte-etape-texte">
+              <span class="carte-etape-titre">Voir mes trajets</span>
+              <span class="carte-etape-sous"
+                >Retrouver vos réservations et vos trajets</span
+              >
+            </span>
+            <svg
+              class="carte-etape-fleche"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+
+          <a href="../recherche/recherche.html" class="carte-etape">
+            <span class="carte-etape-icone" aria-hidden="true">
+              <img src="../images/search.svg" alt="" />
+            </span>
+            <span class="carte-etape-texte">
+              <span class="carte-etape-titre">Rechercher d'autres trajets</span>
+              <span class="carte-etape-sous"
+                >Explorer les trajets de quartier à quartier</span
+              >
+            </span>
+            <svg
+              class="carte-etape-fleche"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+        </div>
       </section>
     </main>
 
-    <!-- FOOTER — TODO (Dev FS1) : liens utiles, mentions -->
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-top">
           <div class="footer-brand">
             <a
-              href="index.html"
+              href="../accueil/index.html"
               class="brand"
               aria-label="Covoiturage — accueil"
             >

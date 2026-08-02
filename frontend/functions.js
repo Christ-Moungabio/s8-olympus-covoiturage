@@ -94,7 +94,7 @@ function formaterPrix(prix) {
      * @return {string} - "5 000 FCFA"
      * Exemple : formaterPrix(500) → "500 FCFA", formaterPrix(1500) → "1 500 FCFA"
      */
-      return `${prix.toLocaleString("fr-FR")} FCFA`;
+      return `${prix.toLocaleString("fr-FR").replace(/\s/g, " ")} FCFA`;
 }
 
 function formaterHeure(heure) {
