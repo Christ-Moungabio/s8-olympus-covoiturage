@@ -51,12 +51,6 @@
   font-weight: 600;
   margin: 0 0 18px;
 }
-.hero-badge-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--color-accent);
-}
 
 .hero-title {
   font-size: clamp(28px, 5vw, 46px);
@@ -78,6 +72,7 @@
   grid-template-columns: 1fr;
   gap: 12px;
   background: var(--color-surface);
+  align-items: end;
   border-radius: 16px;
   padding: 16px;
   box-shadow: var(--shadow-lg);
