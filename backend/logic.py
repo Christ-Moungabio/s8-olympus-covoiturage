@@ -519,7 +519,37 @@ def identifier_trajet_le_plus_reserve(trajets, reservations):
         -> {"trajet_id": 1, "trajet_libelle": "Bacongo → Poto-Poto", "nombre_reservations": 2}
     """
     # TODO : à compléter
-    pass
+    dict_identifier_trajet_le_plus_reserve = {}
+    for res in reservations :
+        statut_reserve = res.get('statut')
+        if ((statut_reserve == "effectue") or (statut_reserve == "en_attente")):
+            id_trajet = res.get("trajet_id")
+            dict_identifier_trajet_le_plus_reserve[id_trajet] = dict_identifier_trajet_le_plus_reserve.get(id_trajet,0) + 1
+        
+    if len(dict_identifier_trajet_le_plus_reserve) == 0 :
+        return None
+    meilleur_id_trajet = None
+    max_reservations = -1
+    for (id_trajet,total_reserve) in dict_identifier_trajet_le_plus_reserve.items():
+        if total_reserve > max_reservations :
+            max_reservations = total_reserve
+            meilleur_id_trajet = id_trajet
+        elif total_reserve == max_reservations and id_trajet < meilleur_id_trajet:
+            meilleur_id_trajet = id_trajet
+        break
+    trajet_trouve = next(
+    (t for t in trajets if t["id"] == meilleur_id_trajet),
+    None
+    )
+    if trajet_trouve is None :
+        return None
+
+    trajet_libelle = trajet_trouve["quartier_depart"] + " → " + trajet_trouve["quartier_arrivee"]
+    return {
+        "trajet_id": meilleur_id_trajet,
+        "trajet_libelle": trajet_libelle,
+        "nombre_reservations": max_reservations
+    }
 
 
 def calculer_indicateurs_dashboard(trajets, reservations, conducteurs):
