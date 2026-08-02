@@ -296,10 +296,9 @@ def historique_reservations_passager(passager_tel, reservations):
     # TODO : à compléter
     resultat = []
     for reservation in reservations:
-        if reservation["passager_tel"] == passager_tel:
-            resultat.append(reservation)
+        if reservation.get("passager_tel") == passager_tel:
+         resultat.append(reservation)
     return resultat
-
 
 def calculer_taux_annulation(reservations):
     """
