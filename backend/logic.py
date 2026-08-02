@@ -429,7 +429,13 @@ def top_conducteurs_par_note(conducteurs, n=3):
         -> [{"nom": "Jean", "note": 4.9}, {"nom": "Sandra", "note": 4.7}]
     """
     # TODO : à compléter
-    pass
+    liste_top_conducteurs_par_note = []
+    if len(conducteurs) == 0 :
+        return liste_top_conducteurs_par_note
+    valeur_de_critere = lambda conducteurs : conducteurs.get('note',0)
+    liste_top_conducteurs_par_note = sorted(conducteurs,key=valeur_de_critere,reverse=True)
+    resultat = liste_top_conducteurs_par_note[:n]
+    return resultat
 
 
 def calculer_prix_moyen_par_quartier(trajets):
