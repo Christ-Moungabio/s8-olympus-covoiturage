@@ -131,7 +131,9 @@
   color: var(--color-text);
   font-size: 15px;
   line-height: 1.4;
-  transition: border-color .15s, box-shadow .15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 .form-card input::placeholder {
@@ -142,7 +144,7 @@
 .form-card input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .select-wrap {
@@ -195,7 +197,7 @@
 
 /* ── Messages (toasts) ──────────────────────────────────────────────────── */
 #erreurs-form,
-#erreur-globale {
+/* #erreur-globale {
   position: fixed;
   left: 50%;
   bottom: 24px;
@@ -210,12 +212,12 @@
   font-size: 14px;
   box-shadow: var(--shadow-lg);
   animation: toast-in .25s ease-out;
-}
+} */
 
 /* si les deux toasts apparaissent, on les empile au lieu de les superposer */
-#erreur-globale {
+/* #erreur-globale {
   bottom: 100px;
-}
+} */
 
 #erreurs-form ul {
   margin: 0;
@@ -228,14 +230,20 @@
 
 :root[data-theme="dark"] #erreurs-form,
 :root[data-theme="dark"] #erreur-globale {
-  background: #3F1616;
-  border-color: #7F1D1D;
-  color: #FCA5A5;
+  background: #3f1616;
+  border-color: #7f1d1d;
+  color: #fca5a5;
 }
 
 @keyframes toast-in {
-  from { opacity: 0; transform: translate(-50%, 12px); }
-  to { opacity: 1; transform: translate(-50%, 0); }
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 /* ── Bloc d'aide ────────────────────────────────────────────────────────── */
