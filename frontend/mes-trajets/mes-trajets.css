@@ -1,10 +1,11 @@
-
 /* Barre de recherche et filtres  */
-
+main {
+  padding: 2rem;
+}
 .barre-recherche-tel {
   max-width: 1200px;
-  margin: 40px auto ;
-  padding: 0 24px;
+  margin: 40px auto;
+  padding: 10px 24px;
 
   display: flex;
   align-items: center;
@@ -19,8 +20,8 @@
 
 .barre-recherche-tel input,
 .barre-recherche-tel select {
-  height: 48px;
-  padding: 0 18px;
+  /* height: 52px; */
+  padding: 1rem 18px;
 
   border: 1px solid var(--color-border);
   border-radius: 14px;
@@ -29,45 +30,44 @@
   color: var(--color-text);
 
   font-size: 15px;
-  transition: border-color .2s ease, box-shadow .2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .barre-recherche-tel input {
-  flex: 1;
+  margin-right: auto;
 }
 
 .barre-recherche-tel input::placeholder {
- color: var(--color-text-muted);
-}
-
-.barre-recherche-tel select {
- appearance: none;
+  color: var(--color-text-muted);
 }
 
 .barre-recherche-tel input:focus,
 .barre-recherche-tel select:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, .12);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
 }
 
 .barre-recherche-tel button {
-  height: 52px;
-  padding: 0 28px;
+  /* height: 52px; */
+  padding: 1rem 28px;
 
   border-radius: 12px;
   background: var(--color-primary);
   color: white;
 
   font-weight: 700;
-  transition: transform .2s ease, background .2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .barre-recherche-tel button:hover {
   background: var(--color-primary-dark);
-  transform: translate(-2px);
+  transform: translateY(-2px);
 }
-
 
 /*  Total dépensé  */
 
@@ -89,7 +89,6 @@
 
   border-radius: 20px;
   border: 1px solid var(--color-border);
-  color:var(--color-text);
   box-shadow: var(--shadow-sm);
 
   font-size: 18px;
@@ -118,7 +117,7 @@
 #mt-liste > p {
   grid-column: 1 / -1;
   padding: 48px 24px;
-  background :var(--color-card);
+  background: var(--color-card);
   border: 1px dashed var(--color-border);
   border-radius: 20px;
   text-align: center;
@@ -143,19 +142,21 @@
   flex-direction: column;
   gap: 14px;
 
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .carte-reservation::before {
-    content: "";
+  content: "";
 
-    display: block;
-    width: 48px;
-    height: 4px;
+  display: block;
+  width: 48px;
+  height: 4px;
 
-    margin-bottom: 16px;
-    border-radius: 999px;
-    background: var(--color-primary);
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: var(--color-primary);
 }
 
 .carte-reservation:hover {
@@ -168,21 +169,20 @@
   font-size: 20px;
   color: var(--color-heading-band);
   letter-spacing: -0.3px;
-
 }
 
 .carte-reservation p {
-  margin : 0;
+  margin: 0;
 
   color: var(--color-text-muted);
   font-size: 15px;
   line-height: 1.6;
-
 }
 
-.carte-reservation p:last-of-type{
-    color: var(--color-text);
-    font-weight: 700;
+
+.carte-reservation p:last-of-type {
+  color: var(--color-text);
+  font-weight: 700;
 }
 /* Statuts  */
 
@@ -200,45 +200,42 @@
 
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
 
   border: 1px solid transparent;
 }
 
 .statut-effectue {
-  background: #DCFCE7;
+  background: #dcfce7;
   color: #166534;
-  border-color: #BBF7D0;
+  border-color: #bbf7d0;
 }
 
 .statut-en_attente {
-  background: #FEF3C7;
-  color: #92400E;
-  border-color: #FCD34D;
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #fcd34d;
 }
 
 .statut-annule {
-  background: #FEE2E2;
-  color: #991B1B;
-  border-color: #FCD34D;
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
 }
 
 /* ── Responsive  */
 
 @media (max-width: 900px) {
-   
- .barre-recherche-tel{
+  .barre-recherche-tel {
     flex-wrap: wrap;
- }
+  }
 
   #mt-liste {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
 @media (max-width: 640px) {
-
   .barre-recherche-tel {
     flex-direction: column;
     align-items: stretch;
@@ -253,7 +250,7 @@
     height: 54px;
   }
 
-  .total-depense{
+  .total-depense {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
@@ -269,8 +266,7 @@
     gap: 16px;
   }
 
-  .carte-reservation{
+  .carte-reservation {
     padding: 22px;
   }
-
 }
