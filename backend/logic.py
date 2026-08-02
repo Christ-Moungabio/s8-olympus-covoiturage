@@ -601,7 +601,7 @@ def verifier_telephone_disponible(comptes, telephone):
         verifier_telephone_disponible(comptes, "055999999") -> True
     """
     # TODO : à compléter
-     for compte in comptes :
+    for compte in comptes :
         valeur_test = compte.get("telephone")
         if valeur_test == telephone :
             return False
@@ -629,4 +629,8 @@ def trouver_compte_par_telephone(comptes, telephone):
         trouver_compte_par_telephone(comptes, "055999999") -> None
     """
     # TODO : à compléter
-    pass
+    for compte in comptes :
+        valeur_test = compte.get('telephone')
+        if valeur_test == telephone :
+            return compte
+    return None
