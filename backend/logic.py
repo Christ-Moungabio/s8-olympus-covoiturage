@@ -60,14 +60,11 @@ def filtrer_trajets_disponibles(trajets):
     """
     # On construit une nouvelle liste, vide au départ.
     # TODO : à compléter
-    
-    trajets_disponibles = []
-    for trajet in trajets:
-        if trajet["places_dispo"] >= 1:
-            trajets_disponibles.append(trajet)
-    return trajets_disponibles 
-    
-
+    trajets_valides = [
+    t for t in trajets 
+    if t.get("places_dispo", 0) >= 1
+    ] 
+    return trajets_valides 
 
 def filtrer_par_quartier_depart(trajets, quartier):
     """
@@ -92,11 +89,12 @@ def filtrer_par_quartier_depart(trajets, quartier):
         -> [{"id": 1, "quartier_depart": "Bacongo"}, {"id": 3, "quartier_depart": "Bacongo"}]
     """
     # TODO : à compléter
-    trajets_filtres = []
-    for trajet in trajets:
-        if trajet["quartier_depart"] == quartier:
-            trajets_filtres.append(trajet)
-    return trajets_filtres
+    trajets_filtres_quqrtier_depart = []
+    for trajet in trajets :
+        nom_quartier = trajet.get('quartier_depart'," ")
+        if (trajet.get("quartier_depart") or "").lower() == quartier.lower():
+            trajets_filtres_quqrtier_depart.append(trajet)
+    return trajets_filtres_quqrtier_depart
 
 
 def filtrer_par_trajet_complet(trajets, depart, arrivee):
@@ -122,13 +120,16 @@ def filtrer_par_trajet_complet(trajets, depart, arrivee):
         filtrer_par_trajet_complet(trajets, "Bacongo", "Poto-Poto")
         -> [{"id": 1, "quartier_depart": "Bacongo", "quartier_arrivee": "Poto-Poto"}]
     """
-
-    # Parcourt chaque trajet dans trajets et Vérifie que les deux conditions sont vraies (départ ET arrivée correspondent).
-    
-    return [
-        trajet for trajet in trajets
-        if trajet["quartier_depart"] == depart and trajet["quartier_arrivee"] == arrivee
-    ]
+    # TODO : à compléter
+    trajets_complets = []
+    depart_recherche = depart.lower()
+    arrivee_recherche = arrivee.lower()
+    for trajet in trajets :
+        depart_trajet = trajet.get('quartier_depart', " ").lower()
+        arrivee_trajet = trajet.get('quartier_arrivee'," ").lower()
+        if ((depart_recherche == depart_trajet) and (arrivee_recherche == arrivee_trajet)):
+            trajets_complets.append(trajet)
+    return trajets_complets
 
 
 def trier_par_heure(trajets):
@@ -156,7 +157,11 @@ def trier_par_heure(trajets):
         comparaison de chaînes), pas besoin de les convertir en nombres.
     """
     # TODO : à compléter
-    return sorted(trajets, key=lambda trajet: trajet["heure"])
+    listes_trier_par_heure = []
+    valeur_de_critere = lambda trajets : trajets.get('heure',"")
+    listes_trier_par_heure = sorted(trajets, key=valeur_de_critere)
+    return listes_trier_par_heure
+
 
 def trier_par_prix_croissant(trajets):
     """
@@ -174,9 +179,10 @@ def trier_par_prix_croissant(trajets):
         sortie -> [{"prix_place": 400}, {"prix_place": 500}, {"prix_place": 700}]
     """
     # TODO : à compléter
-    # sorted() crée une nouvelle liste (elle ne modifie pas trajets).et key=lambda trajet: trajet["prix_place"] indique que le tri se fait selon la valeur de "prix_place".
-    
-    return sorted(trajets, key=lambda trajet: trajet["prix_place"])
+    listes_trier_par_prix_croissant = []
+    valeur_de_critere = lambda trajets:trajets.get('prix_place',0)
+    listes_trier_par_prix_croissant = sorted(trajets,key=valeur_de_critere)
+    return listes_trier_par_prix_croissant
 
 
 # ========================================================================
@@ -211,10 +217,13 @@ def compter_reservations_par_trajet(trajet_id, reservations):
     """
     # TODO : à compléter
     compteur = 0
-    for reservation in reservations:
-        if reservation.get("trajet_id") == trajet_id and reservation.get("statut") != "annule":
+    for res in reservations :
+        valeur_id_trajet = res.get('trajet_id')
+        valeur_statut = res.get('statut')
+        if (valeur_id_trajet == trajet_id) and (valeur_statut != 'annule') :
             compteur += 1
     return compteur
+
 
 def verifier_place_disponible(trajet_id, trajets, reservations):
     """
@@ -260,24 +269,31 @@ def verifier_place_disponible(trajet_id, trajets, reservations):
     """
     # TODO : à compléter
     trajet_trouve = None
-    for trajet in trajets:
-        if trajet.get("id") == trajet_id:
-         trajet_trouve = trajet
-
+    for trajet in trajets :
+        if trajet['id'] == trajet_id :
+            trajet_trouve = trajet
+            break
     if trajet_trouve is None:
-        return {"place_dispo": False, "places_restantes": 0, "message": "Trajet introuvable"}
+        return {
+            "place_dispo": False, 
+            "places_restantes": 0, 
+            "message": "Trajet introuvable"
+        }
+    nb_reservations = compter_reservations_par_trajet(trajet_id, reservations)
+    places_restantes = trajet_trouve.get('places_dispo', 0) - nb_reservations
 
-    reservations_actives = 0
-    for reservation in reservations:
-        if reservation.get("trajet_id") == trajet_id and reservation.get("statut") != "annule":
-         reservations_actives += 1
-
-    places_restantes = trajet_trouve.get("places_dispo", 0) - reservations_actives
-
-    if places_restantes >= 1:
-        return {"place_dispo": True, "places_restantes": places_restantes, "message": ""}
+    if places_restantes <= 0:
+        return {
+            "place_dispo": False, 
+            "places_restantes": 0, 
+            "message": "Trajet complet"
+        }
     else:
-        return {"place_dispo": False, "places_restantes": 0, "message": "Trajet complet"}
+        return {
+            "place_dispo": True, 
+            "places_restantes": places_restantes, 
+            "message": ""
+        }
 
 
 def filtrer_reservations_par_statut(reservations, statut):
@@ -304,11 +320,12 @@ def filtrer_reservations_par_statut(reservations, statut):
         -> [{"id": 1, "statut": "effectue"}, {"id": 3, "statut": "effectue"}]
     """
     # TODO : à compléter
-    resultat = []
-    for reservation in reservations:
-        if reservation.get("statut") == statut:
-            resultat.append(reservation)
-    return resultat
+    listes_filtrer_reservations_par_statut = []
+    for res in reservations :
+        if res.get("statut") == statut :
+            listes_filtrer_reservations_par_statut.append(res)
+    return listes_filtrer_reservations_par_statut
+
 
 def historique_reservations_passager(passager_tel, reservations):
     """
@@ -334,11 +351,12 @@ def historique_reservations_passager(passager_tel, reservations):
         -> [{"id": 1, "passager_tel": "067111222"}, {"id": 3, "passager_tel": "067111222"}]
     """
     # TODO : à compléter
-    resultat = []
-    for reservation in reservations:
-        if reservation.get("passager_tel") == passager_tel:
-         resultat.append(reservation)
-    return resultat
+    liste_historique_reservations_passager = []
+    for res in reservations :
+        if res.get('passager_tel') == passager_tel :
+            liste_historique_reservations_passager.append(res)
+    return liste_historique_reservations_passager
+
 
 def calculer_taux_annulation(reservations):
     """
@@ -364,7 +382,15 @@ def calculer_taux_annulation(reservations):
         (1 annulée sur 3 réservations, soit 33.33...%, arrondi à 33.3)
     """
     # TODO : à compléter
-    pass
+    total_reservations = len(reservations)
+    nb_reservation_annulee = 0
+    if  total_reservations == 0 :
+        return nb_reservation_annulee
+    for res in reservations :
+        if  res.get('statut') == "annule":
+            nb_reservation_annulee += 1
+    calcul_taux_annulation = round((nb_reservation_annulee / total_reservations)*100,1)
+    return calcul_taux_annulation
 
 
 # ========================================================================
