@@ -419,7 +419,23 @@ def calculer_prix_moyen_par_quartier(trajets):
         (moyenne de 500, 400 et 600 = 500)
     """
     # TODO : à compléter
-    pass
+    sommes_prix_par_quartier = {}
+    count_nb_par_quartier = {}
+    resultat_prix_moyen_par_quartier = {}
+    for trajet in trajets :
+        quartier = trajet.get('quartier_depart')
+        prix = trajet.get('prix_place')
+        if quartier in sommes_prix_par_quartier:
+            sommes_prix_par_quartier[quartier] = sommes_prix_par_quartier[quartier] + prix
+            count_nb_par_quartier[quartier] = count_nb_par_quartier[quartier] + 1
+        else :
+            sommes_prix_par_quartier[quartier] = prix
+            count_nb_par_quartier[quartier] = 1
+    for quartier , somme_prix_dans_somme in sommes_prix_par_quartier.items():
+        effectif_count = count_nb_par_quartier[quartier]
+        calcul_prix_moyen_par_quartier = somme_prix_dans_somme / effectif_count
+        resultat_prix_moyen_par_quartier[quartier] = int(round(calcul_prix_moyen_par_quartier))
+    return resultat_prix_moyen_par_quartier
 
 
 def identifier_trajet_le_plus_reserve(trajets, reservations):
