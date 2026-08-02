@@ -550,7 +550,32 @@ def calculer_indicateurs_dashboard(trajets, reservations, conducteurs):
         }
     """
     # TODO : à compléter
-    pass
+    count_trajet_dispo = 0
+    for trajet in trajets :
+        valeur_test = trajet.get("places_dispo",0)
+        if valeur_test >= 1 :
+            count_trajet_dispo = count_trajet_dispo + 1
+
+    nb_conducteurs = len(conducteurs)
+    if nb_conducteurs == 0 :
+        moyenne_note_conducteurs = 0.0
+    else:
+        somme_note_conducteurs = 0.0
+        for conducteur in conducteurs :
+            somme_note_conducteurs = somme_note_conducteurs + conducteur.get('note',0)
+        moyenne_note_conducteurs = round((somme_note_conducteurs / nb_conducteurs),1)
+    conut_reseravtion_active = 0
+    for res in reservations :
+        statut_actif = res.get("statut")
+        if statut_actif == "effectue" or statut_actif == "en_attente":
+            conut_reseravtion_active = conut_reseravtion_active + 1 
+    
+    return {
+        "total_trajets_disponibles": count_trajet_dispo,
+        "total_conducteurs_actifs": nb_conducteurs,
+        "total_reservations_actives": conut_reseravtion_active,
+        "note_moyenne_conducteurs": moyenne_note_conducteurs
+    }
 
 
 # ========================================================================
