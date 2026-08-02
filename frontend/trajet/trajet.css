@@ -32,13 +32,14 @@ main {
 .entete-trajet h1 {
   color: var(--color-heading-band);
   font-size: 32px;
-  margin-bottom: 24px;
+  margin: 0 0 24px;
 }
 
 
 .entete-trajet p {
-  margin-bottom: 12px;
+  margin: 0 0 12px;
   color: var(--color-text-muted);
+  line-height: 1.6;
 }
 
 
@@ -74,7 +75,7 @@ main {
 }
 
 
-/* Places limitées */
+/* Une seule place */
 
 .badge-limite {
   background: #FEF3C7;
@@ -82,13 +83,12 @@ main {
 }
 
 
-/* Trajet complet */
+/* Plus aucune place */
 
 .badge-complet {
   background: #FEE2E2;
   color: #991B1B;
 }
-
 
 
 /* ==========================
@@ -100,6 +100,7 @@ main {
   background: var(--color-card);
 
   border: 1px solid var(--color-border);
+
   border-radius: 20px;
 
   padding: 32px;
@@ -116,15 +117,17 @@ main {
 
   color: var(--color-heading-band);
 
-  margin-bottom: 20px;
+  margin: 0 0 20px;
+
 }
 
 
 .fiche-conducteur p {
 
-  margin-bottom: 12px;
+  margin: 0 0 12px;
 
   color: var(--color-text-muted);
+
 }
 
 
@@ -133,8 +136,8 @@ main {
   font-weight: 600;
 
   color: var(--color-text);
-}
 
+}
 
 
 /* ==========================
@@ -154,8 +157,11 @@ main {
   box-shadow: var(--shadow-sm);
 
   display: flex;
+
   flex-direction: column;
+
   gap: 12px;
+
 }
 
 
@@ -164,6 +170,7 @@ main {
   font-weight: 600;
 
   color: var(--color-text);
+
 }
 
 
@@ -181,6 +188,15 @@ main {
 
   color: var(--color-text);
 
+  font-size: 15px;
+
+}
+
+
+#form-reservation input::placeholder {
+
+  color: var(--color-text-muted);
+
 }
 
 
@@ -190,8 +206,9 @@ main {
 
   border-color: var(--color-primary);
 
-}
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
 
+}
 
 
 /* Bouton réservation */
@@ -206,11 +223,12 @@ main {
 
   background: var(--color-primary);
 
-  color: white;
+  color: #FFFFFF;
 
   font-weight: 700;
 
-  transition: .2s;
+  transition: background .2s ease;
+
 }
 
 
@@ -230,7 +248,6 @@ main {
 }
 
 
-
 /* ==========================
    ERREURS FORMULAIRE
 ========================== */
@@ -246,6 +263,35 @@ main {
   background: #FEE2E2;
 
   color: #991B1B;
+
+}
+
+
+#erreurs-form ul {
+
+  margin: 0;
+
+  padding-left: 20px;
+
+}
+
+
+/* Erreur globale API */
+
+#erreur-globale {
+
+  max-width: 900px;
+
+  margin: 20px auto;
+
+  padding: 16px;
+
+  border-radius: 12px;
+
+  background: #FEE2E2;
+
+  color: #991B1B;
+
 }
 
 
@@ -253,9 +299,7 @@ main {
    RESPONSIVE
 ========================== */
 
-
 @media (max-width: 768px) {
-
 
   main {
 
