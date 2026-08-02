@@ -1,20 +1,157 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BraCovoit — Recherche</title>
-  <link rel="stylesheet" href="recherche.css">
-</head>
-<body id="page-recherche">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BraCovoit — Recherche</title>
+    <link rel="stylesheet" href="recherche.css" />
+    <link rel="stylesheet" href="../layout.css" />
+  </head>
+  <body id="page-recherche">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a
+          href="../accueil/index.html"
+          class="brand"
+          aria-label="Covoiturage — accueil"
+        >
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 32 32"
+            fill="none"
+            aria-hidden="true"
+          >
+            <rect width="32" height="32" rx="10" fill="#2563EB"></rect>
+            <path
+              d="M11 21.5 L21 10.5"
+              stroke="#FFFFFF"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              opacity="0.9"
+            ></path>
+            <circle cx="11" cy="21.5" r="3.4" fill="#FFFFFF"></circle>
+            <circle cx="21" cy="10.5" r="3.4" fill="#F59E0B"></circle>
+          </svg>
+          <span class="brand-name">Tokende</span>
+        </a>
 
-  <!-- NAVIGATION — TODO (Dev FS2) -->
+        <nav class="nav" aria-label="Navigation principale">
+          <a href="../accueil/index.html" class="nav-link" data-nav-link
+            >Accueil</a
+          >
+          <a href="../recherche/recherche.html" class="nav-link" data-nav-link
+            >Recherche</a
+          >
+          <a href="../proposer/proposer.html" class="nav-link" data-nav-link
+            >Proposer un trajet</a
+          >
+          <a
+            href="../mes-trajets/mes-trajets.html"
+            class="nav-link"
+            data-nav-link
+            >Mes trajets</a
+          >
+          <a href="../dashboard/dashboard.html" class="nav-link" data-nav-link
+            >Tableau de bord</a
+          >
+        </nav>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+        <div class="spacer"></div>
 
-  <main>
-    <!-- =====================================================================
+        <button
+          type="button"
+          class="theme-btn"
+          data-theme-toggle
+          aria-label="Changer de thème"
+        >
+          <span aria-hidden="true">
+            <img src="../images/moon.svg" alt="" />
+          </span>
+          <span aria-hidden="true">
+            <img src="../images/sun.svg" alt="" />
+          </span>
+        </button>
+
+        <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+        <div class="header-actions" id="nav-session"></div>
+
+        <button
+          type="button"
+          class="menu-btn"
+          data-mobile-menu-open
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Ouvrir le menu"
+        >
+          <img src="../images/menu.svg" alt="" />
+        </button>
+      </div>
+    </header>
+
+    <div class="mobile-nav" id="mobile-menu" data-mobile-menu hidden>
+      <div
+        class="mobile-nav-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+      >
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button
+            type="button"
+            class="mobile-nav-close"
+            data-mobile-menu-close
+            aria-label="Fermer le menu"
+          >
+            <img src="../images/x.svg" aria-hidden="true" alt="" />
+          </button>
+        </div>
+
+        <div class="mobile-nav-inner">
+          <a href="../accueil/index.html" class="mobile-nav-link" data-nav-link
+            >Accueil</a
+          >
+          <a
+            href="../recherche/recherche.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Recherche</a
+          >
+          <a
+            href="../proposer/proposer.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Proposer un trajet</a
+          >
+          <a
+            href="../mes-trajets/mes-trajets.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Mes trajets</a
+          >
+          <a
+            href="../dashboard/dashboard.html"
+            class="mobile-nav-link"
+            data-nav-link
+            >Tableau de bord</a
+          >
+        </div>
+
+        <!-- Contenu dupliqué depuis #nav-session par layout.js -->
+        <div class="mobile-header-actions" id="nav-session-mobile"></div>
+
+        <p class="mobile-nav-credit">Tokende · covoiturage</p>
+      </div>
+    </div>
+
+    <main>
+      <a href="../accueil/index.html" class="retour-accueil"
+        >← Retour à l'accueil</a
+      >
+
+      <!-- =====================================================================
          FILTRES — TODO (Dev FS2)
          Mettre en forme la barre de filtres : sélecteur de quartier de
          départ, champ de recherche libre, bouton de lancement. Layout en
@@ -22,32 +159,207 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <section class="barre-filtres">
-      <select id="filtre-depart"></select>
-      <input type="text" id="champ-recherche" placeholder="Rechercher un quartier, un mot-clé...">
-      <button id="btn-rechercher">Rechercher</button>
-    </section>
+      <section class="barre-filtres">
+        <select id="filtre-depart"></select>
+        <input
+          type="text"
+          id="champ-recherche"
+          placeholder="Rechercher un quartier, un mot-clé..."
+        />
+        <button id="btn-rechercher">Rechercher</button>
+      </section>
 
-    <!-- =====================================================================
-         RÉSULTATS — TODO (Dev FS2)
-         main.js remplit ce conteneur avec des cartes .carte-trajet, chacune
-         contenant un <h3>, un <p class="heure">, un <p class="conducteur">,
-         un <p class="prix">, un <span class="badge badge-dispo|badge-limite|
-         badge-complet">, et un lien <a class="btn-voir">. Stylez ces
-         éléments (déjà présents dans le HTML généré par main.js — vous ne
-         les créez pas ici, vous écrivez le CSS qui les habille).
-         Layout : grille responsive (1 colonne mobile, 2-3 colonnes desktop).
-         Gérez aussi l'état "aucun résultat" (classe .aucun-resultat).
+      <div class="layout-recherche">
+        <aside class="sidebar-filtres">
+          <h2>Filtrer les trajets</h2>
 
-         *** NE PAS MODIFIER l'id ci-dessous ***
-         ===================================================================== -->
-    <section id="liste-trajets"></section>
-  </main>
+          <div class="filtre-groupe">
+            <span class="filtre-label">Prix maximum</span>
+            <div class="prix-card">
+              <span class="prix-sous-label">Par personne</span>
 
-  <div id="erreur-globale" hidden></div>
+              <span class="prix-valeur">1500 FCFA</span>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="2000"
+              value="1500"
+              class="slider-prix"
+              aria-label="Prix maximum"
+            />
+            <div class="slider-bornes">
+              <span>0 FCFA</span><span>2 000 FCFA</span>
+            </div>
+          </div>
 
-  <!-- NE PAS MODIFIER -->
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+          <div class="filtre-groupe">
+            <span class="filtre-label">Période</span>
+            <div class="pills">
+              <button type="button" class="pill pill-active">Tous</button>
+              <button type="button" class="pill">Matin (6h–12h)</button>
+              <button type="button" class="pill">Midi (12h–14h)</button>
+              <button type="button" class="pill">Après-midi (14h–18h)</button>
+              <button type="button" class="pill">Soir (+18h)</button>
+            </div>
+          </div>
+
+          <div class="filtre-groupe">
+            <span class="filtre-label">Véhicule</span>
+            <div class="pills">
+              <button type="button" class="pill pill-active">Tous</button>
+              <button type="button" class="pill">Berline</button>
+
+              <button type="button" class="pill">Citadine</button>
+
+              <button type="button" class="pill">SUV</button>
+            </div>
+          </div>
+
+          <div class="filtre-toggle">
+            <div>
+              <span class="filtre-label">Conducteurs vérifiés</span>
+              <span class="toggle-souslabel"
+                >Uniquement les profils certifiés</span
+              >
+            </div>
+            <input
+              type="checkbox"
+              class="toggle"
+              aria-label="Conducteurs vérifiés uniquement"
+            />
+          </div>
+
+          <div class="mini-carte" aria-hidden="true">
+            <span class="mini-carte-tag">Aperçu de l'itinéraire</span>
+          </div>
+        </aside>
+
+        <div class="contenu-resultats">
+          <div class="resultats-entete">
+            <span id="nb-resultats" class="nb-resultats"></span>
+            <div class="tri-boutons">
+              <button type="button" class="tri-btn tri-btn-active">
+                Départ tôt
+              </button>
+              <button type="button" class="tri-btn">Départ tard</button>
+              <button type="button" class="tri-btn">Prix ↑</button>
+              <button type="button" class="tri-btn">Prix ↓</button>
+              <button type="button" class="tri-btn">Durée</button>
+            </div>
+          </div>
+
+          <!-- =====================================================================
+             RÉSULTATS — TODO (Dev FS2)
+             main.js remplit ce conteneur avec des cartes .carte-trajet, chacune
+             contenant un <h3>, un <p class="heure">, un <p class="conducteur">,
+             un <p class="prix">, un <span class="badge badge-dispo|badge-limite|
+             badge-complet">, et un lien <a class="btn-voir">. Stylez ces
+             éléments (déjà présents dans le HTML généré par main.js — vous ne
+             les créez pas ici, vous écrivez le CSS qui les habille).
+             Layout : grille responsive (1 colonne mobile, 2-3 colonnes desktop).
+             Gérez aussi l'état "aucun résultat" (classe .aucun-resultat).
+
+             *** NE PAS MODIFIER l'id ci-dessous ***
+             ===================================================================== -->
+          <section id="liste-trajets"></section>
+        </div>
+      </div>
+    </main>
+
+    <div id="erreur-globale" hidden></div>
+
+    <!-- FOOTER — TODO (Dev FS1) : liens utiles, mentions -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a
+              href="index.html"
+              class="brand"
+              aria-label="Covoiturage — accueil"
+            >
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 32 32"
+                fill="none"
+                aria-hidden="true"
+              >
+                <rect width="32" height="32" rx="10" fill="#2563EB"></rect>
+                <path
+                  d="M11 21.5 L21 10.5"
+                  stroke="#FFFFFF"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  opacity="0.9"
+                ></path>
+                <circle cx="11" cy="21.5" r="3.4" fill="#FFFFFF"></circle>
+                <circle cx="21" cy="10.5" r="3.4" fill="#F59E0B"></circle>
+              </svg>
+              <span class="brand-name">Tokende</span>
+            </a>
+            <p class="footer-desc">
+              « Tokende » veut dire <em>on y va</em> en lingala. Le covoiturage
+              de quartier à quartier, pensé pour Brazzaville et la République du
+              Congo.
+            </p>
+          </div>
+
+          <div class="footer-columns">
+            <div class="footer-col">
+              <h3 class="footer-heading">Plateforme</h3>
+              <ul>
+                <li>
+                  <a href="../recherche/recherche.html">Rechercher un trajet</a>
+                </li>
+                <li>
+                  <a href="../proposer/proposer.html">Proposer un trajet</a>
+                </li>
+                <li>
+                  <a href="../mes-trajets/mes-trajets.html">Mes Trajets</a>
+                </li>
+                <li>
+                  <a href="../dashboard/dashboard.html">Tableau de board</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-heading">Quartiers</h3>
+              <ul>
+                <li>Poto-Poto · Ouenzé</li>
+                <li>Bacongo · Makélékélé</li>
+                <li>Talangaï · Djiri</li>
+                <li>Moungali · Centre-ville</li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-heading">Assistance</h3>
+              <ul>
+                <li><a href="#">Centre d'aide</a></li>
+                <li><a href="#">Sécurité et assurance</a></li>
+                <li><a href="tel:+242060000000">+242 06 000 00 00</a></li>
+                <li>
+                  <a href="mailto:bonjour@tokende.cg">bonjour@tokende.cg</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Tokende — Brazzaville, République du Congo</p>
+          <p class="footer-legal">
+            <a href="#">Conditions générales</a> ·
+            <a href="#">Confidentialité</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- NE PAS MODIFIER -->
+    <script src="../layout.js"></script>
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>
