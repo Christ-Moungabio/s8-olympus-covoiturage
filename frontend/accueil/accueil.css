@@ -151,8 +151,8 @@
 .search-submit img {
   filter: invert(1);
 }
-:root[data-theme="dark"] .search-input img,
-:root[data-theme="dark"] .pax-btn img {
+:root:has(#theme-toggle:checked) .search-input img,
+:root:has(#theme-toggle:checked) .pax-btn img {
   filter: invert(1);
 }
 .pax-value {

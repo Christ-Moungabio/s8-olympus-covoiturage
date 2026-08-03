@@ -29,7 +29,7 @@
     0 2px 4px rgba(17, 24, 39, 0.04), 0 18px 44px rgba(17, 24, 39, 0.08);
 }
 
-:root[data-theme="dark"] {
+:root:has(#theme-toggle:checked) {
   color-scheme: dark;
   --color-bg: #0f172a;
   --color-surface: #1e293b;
@@ -51,18 +51,18 @@
 .theme-btn > span:first-child {
   display: block;
 }
-:root[data-theme="dark"] .theme-btn > span:first-child {
+:root:has(#theme-toggle:checked) .theme-btn > span:first-child {
   display: none;
 }
-:root[data-theme="dark"] .theme-btn > span:last-child {
+:root:has(#theme-toggle:checked) .theme-btn > span:last-child {
   display: block;
 }
 
 /* ── Icônes des boutons : blanches en mode sombre (SVG stroke="currentColor"
    chargés via <img>, currentColor n'hérite pas de la page — on inverse) ──── */
-:root[data-theme="dark"] .theme-btn img,
-:root[data-theme="dark"] .menu-btn img,
-:root[data-theme="dark"] .mobile-nav-close img {
+:root:has(#theme-toggle:checked) .theme-btn img,
+:root:has(#theme-toggle:checked) .menu-btn img,
+:root:has(#theme-toggle:checked) .mobile-nav-close img {
   filter: invert(1);
 }
 
@@ -150,7 +150,19 @@ main {
   }
 }
 
-/* ── Bouton menu (hamburger) ────────────────────────────────────────────── */
+.mobile-menu-toggle-input,
+.theme-toggle-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .menu-btn {
   width: 38px;
   height: 38px;
@@ -160,6 +172,7 @@ main {
   align-items: center;
   justify-content: center;
   color: var(--color-text);
+  cursor: pointer;
 }
 
 .theme-btn {
@@ -171,6 +184,7 @@ main {
   align-items: center;
   justify-content: center;
   color: var(--color-text);
+  cursor: pointer;
 }
 
 @media (min-width: 960px) {
@@ -180,25 +194,35 @@ main {
 }
 
 /* ── Panneau menu mobile ────────────────────────────────────────────────── */
-.mobile-nav {
+.mobile-nav-backdrop {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 80;
   background: rgba(15, 23, 42, 0.4);
+  cursor: default;
 }
+.mobile-menu-toggle-input:checked ~ .mobile-nav-backdrop {
+  display: block;
+}
+
 .mobile-nav-panel {
-  position: absolute;
+  display: none;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
+  z-index: 81;
   width: min(86vw, 330px);
   background: var(--color-surface);
   border-left: 1px solid var(--color-border);
   padding: 22px;
-  display: flex;
   flex-direction: column;
   gap: 6px;
   animation: fade-in 0.2s ease both;
+}
+.mobile-menu-toggle-input:checked ~ .mobile-nav-panel {
+  display: flex;
 }
 
 .mobile-nav-inner {
@@ -208,48 +232,6 @@ main {
   flex: 1;
 }
 
-.mobile-header-actions {
-  display: flex;
-  align-items: stretch;
-  gap: 10px;
-  flex-direction: column;
-}
-
-.mobile-header-actions a {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-/* ── État de session dupliqué (accueil.js → #nav-session-mobile) ───────── */
-#nav-session-mobile {
-  color: var(--color-text-muted);
-  font-weight: 600;
-  text-align: center;
-}
-#nav-session-mobile a,
-#nav-session-mobile button {
-  padding: 14px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-}
-#nav-session-mobile a:hover,
-#nav-session-mobile button:hover {
-  background: var(--color-bg);
-}
-#nav-session-mobile a:last-of-type,
-#nav-session-mobile button {
-  background: var(--color-primary);
-  color: #fff;
-  border-color: transparent;
-}
-#nav-session-mobile a:last-of-type:hover,
-#nav-session-mobile button:hover {
-  background: var(--color-primary-dark);
-}
 .mobile-nav-header {
   display: flex;
   align-items: center;
@@ -270,6 +252,7 @@ main {
   align-items: center;
   justify-content: center;
   color: var(--color-text);
+  cursor: pointer;
 }
 .mobile-nav-link {
   padding: 14px;
@@ -292,7 +275,8 @@ main {
 }
 
 @media (min-width: 960px) {
-  .mobile-nav {
+  .mobile-nav-backdrop,
+  .mobile-nav-panel {
     display: none !important;
   }
 }
