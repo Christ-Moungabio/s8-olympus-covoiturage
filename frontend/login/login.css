@@ -89,7 +89,7 @@
   border: 1px solid var(--color-danger);
 }
 
-:root[data-theme="dark"] .form-errors {
+:root:has(#theme-toggle:checked) .form-errors {
   background: rgba(248, 113, 113, 0.12);
 }
 .form-errors ul {

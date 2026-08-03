@@ -13,24 +13,32 @@
       >Retour à l'accueil</a
     >
 
-    <div class="mobile-nav" id="mobile-menu" data-mobile-menu hidden>
-      <div
-        class="mobile-nav-panel"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Menu"
-      >
-        <div class="mobile-nav-header">
-          <span class="mobile-nav-title">Menu</span>
-          <button
-            type="button"
-            class="mobile-nav-close"
-            data-mobile-menu-close
-            aria-label="Fermer le menu"
-          >
-            <img src="../images/x.svg" aria-hidden="true" alt="" />
-          </button>
-        </div>
+    <input
+      type="checkbox"
+      id="mobile-menu-toggle"
+      class="mobile-menu-toggle-input"
+    />
+    <label
+      for="mobile-menu-toggle"
+      class="mobile-nav-backdrop"
+      aria-hidden="true"
+    ></label>
+    <div
+      class="mobile-nav-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Menu"
+    >
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-title">Menu</span>
+        <label
+          for="mobile-menu-toggle"
+          class="mobile-nav-close"
+          aria-label="Fermer le menu"
+        >
+          <img src="../images/x.svg" aria-hidden="true" alt="" />
+        </label>
+      </div>
 
         <div class="mobile-nav-inner">
           <a href="../accueil/index.html" class="mobile-nav-link" data-nav-link
@@ -62,12 +70,8 @@
           >
         </div>
 
-        <!-- Contenu dupliqué depuis #nav-session par layout.js -->
-        <div class="mobile-header-actions" id="nav-session-mobile"></div>
-
         <p class="mobile-nav-credit">Covoiturage · votre ville</p>
       </div>
-    </div>
 
     <main class="auth-main">
       <div class="auth-card">
@@ -116,7 +120,6 @@
 
     <div id="erreur-globale" hidden></div>
 
-    <script src="../layout.js"></script>
     <script src="../functions.js"></script>
     <script src="../main.js"></script>
   </body>

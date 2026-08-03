@@ -228,8 +228,8 @@
   margin: 2px 0;
 }
 
-:root[data-theme="dark"] #erreurs-form,
-:root[data-theme="dark"] #erreur-globale {
+:root:has(#theme-toggle:checked) #erreurs-form,
+:root:has(#theme-toggle:checked) #erreur-globale {
   background: #3f1616;
   border-color: #7f1d1d;
   color: #fca5a5;
